@@ -1,0 +1,25 @@
+{
+  "id": "cressi-triton-premium-traje-de-neopreno-b01byv5wwy",
+  "name": "Cressi Triton Premium - Traje de Neopreno Unisex Color Negro/Verde Talla XXL/6",
+  "brand": "Cressi",
+  "category": "neopreno",
+  "image": "https://m.media-amazon.com/images/I/31Ng9X906SL._SL300_.jpg",
+  "features": [
+    "Comodidad, calidez y protección",
+    "Materiales premium de alta calidad",
+    "Alta visibilidad para mejorar la seguridad"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B01BYV5WWY",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "prime": true,
+      "checkedAt": null
+    }
+  ]
+}

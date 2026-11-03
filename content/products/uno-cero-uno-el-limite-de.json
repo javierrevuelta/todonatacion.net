@@ -1,0 +1,20 @@
+{
+  "id": "uno-cero-uno-el-limite-de",
+  "name": "Uno cero uno el límite de lo imposible",
+  "brand": "Uno",
+  "category": "natacion-sincronizada",
+  "image": "https://m.media-amazon.com/images/I/41YKvXLSz9L._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B0B653Z9SM",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

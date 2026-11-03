@@ -1,0 +1,24 @@
+{
+  "id": "speedo-palmes-natation-piscine-para-natacion",
+  "name": "Speedo Palmes Natation Piscine para Natación Piscina y Playa Color Verde/Cinza Talla unica",
+  "brand": "Speedo",
+  "category": "palas",
+  "image": "https://m.media-amazon.com/images/I/31o8KCpFEXL._SL300_.jpg",
+  "features": [
+    "Tallas: Talla única",
+    "Tecnología Speedo Biofuse para una comodidad y un ajuste óptimos",
+    "Saca el máximo partido a cada brazada gracias al diseño avanzado hidrodinámico."
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B07BHL6HQY",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "zoggs-little-bondi-gafas-de-natacion",
+  "name": "Zoggs Little Bondi - Gafas de natación para niños con protección UV y antivaho azul/verde/transparente 0-6 años",
+  "brand": "Zoggs",
+  "category": "gafas",
+  "image": "https://m.media-amazon.com/images/I/31CA0cO51hL._SL300_.jpg",
+  "features": [
+    "Zoggs Las gafas Tots son adecuadas para niños de 0 a 6 años",
+    "Las lentes transparentes proporcionan la máxima visibilidad y claridad",
+    "Zoggs El sistema de ajuste rápido es rápido y seguro, la forma más fácil de obtener el ajuste perfecto",
+    "Lentes antivaho Fogbuster para mayor control de humedad y claridad de visión",
+    "Máxima protección UV que bloquea el 99-100% de los dañinos rayos UV del sol"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B07L3CRXMB",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

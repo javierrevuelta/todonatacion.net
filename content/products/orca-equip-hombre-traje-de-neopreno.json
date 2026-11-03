@@ -1,0 +1,25 @@
+{
+  "id": "orca-equip-hombre-traje-de-neopreno",
+  "name": "Orca Equip Hombre Traje de neopreno Triatlón  6",
+  "brand": "Orca",
+  "category": "neopreno",
+  "image": "https://m.media-amazon.com/images/I/31BA15jglHL._SL300_.jpg",
+  "features": [
+    "El material Yamamoto 39 de 1,5 mm en los brazos proporciona la flexibilidad de los trajes de neopreno de alta gama.",
+    "El forro interior Infinity Skin es suave para tu piel sin apretar la zona del cuello.",
+    "Los paneles SCS minimizarán la resistencia del traje de neopreno en el agua para que te deslices mejor a través del agua mientras nadas.",
+    "Transiciones más rápidas Los paneles Hydrolite permiten que el traje de neopreno se deslice más fácilmente durante las transiciones."
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B084BR2LSC",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

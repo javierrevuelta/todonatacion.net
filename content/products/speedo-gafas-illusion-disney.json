@@ -1,0 +1,25 @@
+{
+  "id": "speedo-gafas-illusion-disney",
+  "name": "Speedo Gafas Illusion Disney",
+  "brand": "Speedo",
+  "category": "gafas",
+  "image": "https://m.media-amazon.com/images/I/31I--cxrdHL._SL300_.jpg",
+  "features": [
+    "Montura integrada y correa de silicona con motivos impresos de frozen",
+    "Construcción con marco suave para una mayor comodidad.",
+    "Mecanismo con botón pasador fácil de usar para un ajuste rápido y seguro.",
+    "Cristales claros para condiciones de poca luminosidad que garantizan la máxima visibilidad. Ideal para piscinas cubiertas."
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B07QR6DYW2",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "zoggs-gafas-de-natacion-juventud-unisex",
+  "name": "Zoggs Gafas de Natación Juventud Unisex Batman hasta 14 Años",
+  "brand": "Zoggs",
+  "category": "gafas",
+  "image": "https://m.media-amazon.com/images/I/41iSgELsYSL._SL300_.jpg",
+  "features": [
+    "'Adecuado en edad hasta aproximadamente 14 años",
+    "Suave silicona marco",
+    "Máximo Protección UV bloquea el 100% dañinos rayos UVA y UVB",
+    "Fog Buster Anti-Fog impregnación para visión clara"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B0794NYNQ7",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "42-segundos",
+  "name": "42 segundos",
+  "brand": "42",
+  "category": "natacion-sincronizada",
+  "image": "https://m.media-amazon.com/images/I/51NAS2om41L._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B0B64BN5C5",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

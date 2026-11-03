@@ -1,0 +1,20 @@
+{
+  "id": "un-arduo-camino",
+  "name": "Un Arduo Camino",
+  "brand": "Un",
+  "category": "natacion-sincronizada",
+  "image": "https://m.media-amazon.com/images/I/41pCvKYl1WL._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B0CVQV63VT",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "speedo-fastskin-elite-mirror-gafas-de",
+  "name": "Speedo Fastskin Elite Mirror Gafas de natación, Unisex Adulto",
+  "brand": "Speedo",
+  "category": "gafas",
+  "image": "https://m.media-amazon.com/images/I/41dCW57zhZL._SL300_.jpg",
+  "features": [
+    "Sellado IQfit 3D para un ajuste de las gafas sin fugas, seguro y con menos marcas alrededor de los ojos",
+    "Correa de las gafas IQfit con escala de tensión patentada para un ajuste único y personal",
+    "Perfil con cristales higroscópicos para la máxima visión periférica con el mínimo movimiento de cabeza",
+    "Los marcadores de puntos ayudan a alinear las gafas Fastskin y el gorro con un solo toque antes de una competición"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B08146RHT8",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

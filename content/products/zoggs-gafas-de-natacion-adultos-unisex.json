@@ -1,0 +1,26 @@
+{
+  "id": "zoggs-gafas-de-natacion-adultos-unisex",
+  "name": "Zoggs Gafas de natación Adultos Unisex Negro/Espejo una una Talla",
+  "brand": "Zoggs",
+  "category": "gafas",
+  "image": "https://m.media-amazon.com/images/I/41HMvpgE76L._SL300_.jpg",
+  "features": [
+    "Las lentes de titanio proporcionan protección adicional contra los reflejos de luz para reducir la fatiga ocular en condiciones de mucha luz/soleadas",
+    "Cinta para la cabeza de doble banda hecha de silicona de alta calidad reduce la presión alrededor de los ojos",
+    "Clt - lentes con tecnología curva ofrecen visión periférica de 180°",
+    "Lentes anti-empañantes fogbuster para mayor control de la humedad y mejor claridad de visión",
+    "Máxima protección contra los rayos uv bloquea el 99-100% de los dañinos rayos solares uv"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B07L39NLBD",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

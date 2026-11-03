@@ -1,0 +1,20 @@
+{
+  "id": "zone3-boya-natacion-aguas-abiertas-triathlon",
+  "name": "Zone3 Boya Natación Aguas Abiertas, Triathlon color Naranja",
+  "brand": "Zone3",
+  "category": "boyas",
+  "image": "https://m.media-amazon.com/images/I/313mwJhsYJL._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B01ALX5TF6",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

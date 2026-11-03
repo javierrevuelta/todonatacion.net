@@ -1,0 +1,20 @@
+{
+  "id": "orca-neopreno-s7-2019-talla-mt",
+  "name": "Orca Neopreno S7 2019 Talla MT",
+  "brand": "Orca",
+  "category": "neopreno",
+  "image": "https://m.media-amazon.com/images/I/31QsqnM4oxL._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B07L9Y53GL",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "zoggs-fusion-air-gafas-de-natacion",
+  "name": "Zoggs Fusion Air Gafas de natación Unisex Negro/Verde/Humo Talla única",
+  "brand": "Zoggs",
+  "category": "gafas",
+  "image": "https://m.media-amazon.com/images/I/4115hIsrDsL._SL300_.jpg",
+  "features": [
+    "Cojín de aire tecnología para un acolchado 'seal, siginificantly reducido marcado alrededor del ojo",
+    "Doble cinta elástica, reduce la presión alrededor de los ojos",
+    "Protección uv",
+    "Puentes intercambiables para un ajuste personalizado",
+    "Ideal para al aire libre natación"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B07856WGVB",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

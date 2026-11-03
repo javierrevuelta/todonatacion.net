@@ -1,0 +1,20 @@
+{
+  "id": "neopreno-sailfish-vibrant-2018-wxs",
+  "name": "Neopreno Sailfish Vibrant 2018  WXS",
+  "brand": "Neopreno",
+  "category": "neopreno",
+  "image": "https://m.media-amazon.com/images/I/31CQxP0omWL._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B079ZJPR5F",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

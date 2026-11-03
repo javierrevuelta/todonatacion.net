@@ -1,0 +1,20 @@
+{
+  "id": "water-lilies",
+  "name": "Water Lilies",
+  "brand": "Water",
+  "category": "natacion-sincronizada",
+  "image": "https://m.media-amazon.com/images/I/41nLe3O90nL._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B0DN8X655D",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

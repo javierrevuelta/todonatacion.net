@@ -1,0 +1,20 @@
+{
+  "id": "pullbuoy-de-espuma-entrenamiento-de-natacion",
+  "name": "Pullbuoy de Espuma | Entrenamiento de natación",
+  "brand": "Pullbuoy",
+  "category": "pullbuoy",
+  "image": "https://m.media-amazon.com/images/I/31wrHwJFxZL._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B094JY2BTD",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

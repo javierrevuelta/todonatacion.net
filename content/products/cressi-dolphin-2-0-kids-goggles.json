@@ -1,0 +1,26 @@
+{
+  "id": "cressi-dolphin-2-0-kids-goggles",
+  "name": "Cressi Dolphin 2.0 Kids Goggles - Light Yellow/Clear",
+  "brand": "Cressi",
+  "category": "gafas",
+  "image": "https://m.media-amazon.com/images/I/41lXC74YpyL._SL300_.jpg",
+  "features": [
+    "Cressi es una empresa familiar, que desde 1946 produce productos de alta calidad",
+    "Cristales de policarbonato con tratamiento externo de alta resistencia a las rayadas",
+    "Cristales de policarbonato antirrotura con tratamiento externo de alta resistencia a las rayadas",
+    "Protección anti UV y tratamiento interno antiempañamiento",
+    "Tira de silicona muy elástica y confortable Hebillas microrregulables con una sola mano"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B0743LM599",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

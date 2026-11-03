@@ -1,0 +1,23 @@
+{
+  "id": "zoggs-estuche-para-gafas-adultos-unisex",
+  "name": "Zoggs Estuche para Gafas Adultos Unisex Gris Azulado una Talla",
+  "brand": "Zoggs",
+  "category": "gafas",
+  "image": "https://m.media-amazon.com/images/I/41X5hoGBlkL._SL300_.jpg",
+  "features": [
+    "Protege anteojos y gafas de natación; 17.5(l) x 8(w) x 6(d) cm; Orificios de ventilación para circulación"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B01KOI10YC",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "prime": true,
+      "checkedAt": null
+    }
+  ]
+}

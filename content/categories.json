@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "actividades-acuaticas",
+    "name": "Actividades Acuáticas",
+    "description": "",
+    "count": 0
+  },
+  {
+    "slug": "banadores-hombre",
+    "name": "Bañadores de Hombre",
+    "description": "",
+    "count": 0
+  },
+  {
+    "slug": "banadores-mujer",
+    "name": "Bañadores de Mujer",
+    "description": "",
+    "count": 0
+  },
+  {
+    "slug": "boyas-seguridad",
+    "name": "Boyas de Seguridad",
+    "description": "",
+    "count": 0
+  },
+  {
+    "slug": "consejos",
+    "name": "Consejos",
+    "description": "[mailpoet_form id=\"4\"]",
+    "count": 20
+  },
+  {
+    "slug": "entrenamientos",
+    "name": "Entrenamientos",
+    "description": "",
+    "count": 28
+  },
+  {
+    "slug": "noticias",
+    "name": "Noticias",
+    "description": "[mailpoet_form id=\"4\"]",
+    "count": 5
+  },
+  {
+    "slug": "recursos",
+    "name": "Recursos",
+    "description": "[mailpoet_form id=\"1\"]",
+    "count": 3
+  }
+]

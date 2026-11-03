@@ -1,0 +1,25 @@
+{
+  "id": "speedo-gafas-vengeance-unisex-para-adulto",
+  "name": "Speedo Gafas Vengeance Unisex para Adulto, Jade/Azul Marino/Humo",
+  "brand": "Speedo",
+  "category": "gafas",
+  "image": "https://m.media-amazon.com/images/I/31XGieybUxL._SL300_.jpg",
+  "features": [
+    "Puentes de nariz intercambiables para un ajuste individual",
+    "Correa de cabeza doble de silicona para un ajuste seguro",
+    "Perfil aerodinámico de los cristales diseñado para abrirse paso en el agua",
+    "Los cristales ahumados proporcionan protección en condiciones de mucha luminosidad"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B08147T2QS",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "supertrip-snorkel-de-natacion-tubo-de",
+  "name": "Supertrip Snorkel de Natacion Tubo de natación para Piscina  Black",
+  "brand": "Supertrip",
+  "category": "tubo-de-natacion",
+  "image": "https://m.media-amazon.com/images/I/31gjDDI4OQL._SL300_.jpg",
+  "features": [
+    "Snorkel de Natacion , Tubo de natación para Piscina"
+  ],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B0D17VKJLV",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "adidas-uomo-3-stripes-swim-boxers",
+  "name": "Adidas Uomo 3 Stripes Swim Boxers Black/White L-XL",
+  "brand": "Adidas",
+  "category": "banador-hombre",
+  "image": "https://m.media-amazon.com/images/I/21tuj67BfnL._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B0CZ4FXR2Z",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "prime": true,
+      "checkedAt": null
+    }
+  ]
+}

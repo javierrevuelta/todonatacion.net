@@ -1,0 +1,20 @@
+{
+  "id": "arena-pinza-nariz-pack-3-colores",
+  "name": "Arena Pinza Nariz Pack 3 Colores Surtidos",
+  "brand": "Arena",
+  "category": "pinzas-nasales",
+  "image": "https://m.media-amazon.com/images/I/415qtU14TcL._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B000FPGGP8",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

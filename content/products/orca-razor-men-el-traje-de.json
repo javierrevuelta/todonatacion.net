@@ -1,0 +1,20 @@
+{
+  "id": "orca-razor-men-el-traje-de",
+  "name": "ORCA Razor Men el traje de neopreno más flexible del mercado. (6)",
+  "brand": "ORCA",
+  "category": "neopreno",
+  "image": "https://m.media-amazon.com/images/I/318+6fjVRcL._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B00HU7L7ZI",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}

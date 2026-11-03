@@ -1,0 +1,20 @@
+{
+  "id": "finis-swimmer-s-snorkel-tubo-tecnico",
+  "name": "Finis Swimmer´s Snorkel – Tubo técnico para entrenamiento de natación",
+  "brand": "Finis",
+  "category": "tubo-de-natacion",
+  "image": "https://m.media-amazon.com/images/I/31HaWI0qd4L._SL300_.jpg",
+  "features": [],
+  "pros": [],
+  "cons": [],
+  "offers": [
+    {
+      "merchant": "amazon-es",
+      "externalId": "B004O6ECL4",
+      "priceCents": null,
+      "currency": "EUR",
+      "available": true,
+      "checkedAt": null
+    }
+  ]
+}
