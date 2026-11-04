@@ -1,12 +1,15 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getCategory, getPosts, type Entry } from "@/lib/content";
+import { BRANDED_TITLE_MAX } from "@/lib/seo-text";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { Mdx } from "./Mdx";
 
 export function entryMetadata(entry: Entry): Metadata {
+  const title = entry.seoTitle ?? entry.title;
   return {
-    title: entry.seoTitle ? { absolute: entry.seoTitle } : entry.title,
+    // La plantilla del layout añade " - Todo Natación" solo si el título es corto.
+    title: title.length <= BRANDED_TITLE_MAX ? title : { absolute: title },
     description: entry.description,
     alternates: { canonical: entry.path },
     robots: entry.noindex ? { index: false } : undefined,

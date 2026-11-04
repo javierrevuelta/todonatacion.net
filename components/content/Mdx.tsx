@@ -7,6 +7,7 @@ import { ProductBox, ProductGrid, ProductList } from "@/components/affiliate/Pro
 import { ProductTable } from "@/components/affiliate/ProductTable";
 import { AFFILIATE_REL, AMAZON_TAG } from "@/lib/affiliates/links";
 import { YouTube, Embed } from "./Embeds";
+import { CardGrid } from "./CardGrid";
 import { Newsletter, ContactForm } from "./Forms";
 import { SwolfCalculator, CaloriesCalculator } from "@/components/tools/Calculators";
 
@@ -46,6 +47,7 @@ const components: MDXComponents = {
   ProductTable,
   YouTube,
   Embed,
+  CardGrid,
   Newsletter,
   ContactForm,
   SwolfCalculator,

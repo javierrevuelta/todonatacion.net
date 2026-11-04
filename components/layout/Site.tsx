@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FOOTER_NAV, NAV, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
+import { FOOTER_GUIDES, FOOTER_NAV, NAV, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 export function SiteHeader() {
   return (
@@ -51,24 +51,39 @@ export function SiteHeader() {
   );
 }
 
-export function SiteFooter() {
+function FooterColumn({ title, links }: { title: string; links: { href: string; label: string }[] }) {
   return (
-    <footer className="mt-16 border-t border-slate-200 bg-white">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-slate-600 md:flex-row md:items-center md:justify-between">
-        <p>
-          <strong className="text-slate-800">{SITE_NAME}</strong> · {SITE_TAGLINE}
-        </p>
-        <nav className="flex flex-wrap gap-4">
-          {FOOTER_NAV.map((l) => (
-            <Link key={l.href} href={l.href} className="hover:text-sky-700">
+    <nav aria-label={title}>
+      <h2 className="mb-3 text-sm font-semibold text-slate-900">{title}</h2>
+      <ul className="space-y-2">
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link href={l.href} className="hover:text-sky-700">
               {l.label}
             </Link>
-          ))}
-        </nav>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+export function SiteFooter() {
+  return (
+    <footer className="mt-16 border-t border-slate-200 bg-white text-sm text-slate-600">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 md:grid-cols-3">
+        <div>
+          <p className="mb-3 font-semibold text-slate-900">{SITE_NAME}</p>
+          <p className="mb-3">{SITE_TAGLINE}.</p>
+          <p className="text-xs text-slate-500">
+            Algunos enlaces de esta web son de afiliado: si compras a través de ellos recibimos una pequeña comisión,
+            sin coste extra para ti. Como afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen
+            los requisitos aplicables.
+          </p>
+        </div>
+        <FooterColumn title="Guías de compra" links={FOOTER_GUIDES} />
+        <FooterColumn title="Información legal" links={FOOTER_NAV} />
       </div>
-      <p className="mx-auto max-w-6xl px-4 pb-8 text-xs text-slate-500">
-        Como afiliado de Amazon, obtengo ingresos por las compras adscritas que cumplen los requisitos aplicables.
-      </p>
     </footer>
   );
 }

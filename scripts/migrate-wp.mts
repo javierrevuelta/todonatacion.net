@@ -17,6 +17,7 @@ import TurndownService from "turndown";
 // @ts-expect-error: el paquete no publica tipos
 import { gfm } from "turndown-plugin-gfm";
 import matter from "gray-matter";
+import { cleanSeoDescription, cleanSeoTitle } from "../lib/seo-text";
 import { compile } from "@mdx-js/mdx";
 import remarkGfm from "remark-gfm";
 
@@ -101,6 +102,22 @@ const legacyRedirects: { source: string; destination: string }[] = JSON.parse(
   await fs.readFile(path.join(ROOT, "redirects.json"), "utf8"),
 );
 const redirectMap = new Map(legacyRedirects.map((r) => [r.source, r.destination]));
+
+/**
+ * Enlaces cortos amzn.to del contenido, resueltos a mano a su ASIN. Así pasan
+ * por el componente de enlace y llevan nuestro tag (3GZ3egx llevaba el de
+ * todotriatlon-21). Uno nuevo sin resolver lo marca `npm run audit`.
+ */
+const AMZN_SHORTLINKS: Record<string, string> = {
+  "2KsO4ae": "B06W53KRG6",
+  "3GZ3egx": "B07Z7SSXV8",
+};
+
+/** Títulos SEO que la limpieza automática no deja bien. */
+const SEO_TITLE_OVERRIDES: Record<string, string> = {
+  "/": "Todo Natación: técnica, entrenamientos y material para nadar",
+  "/estilos-natacion/crol-estilo-libre-natacion/": "Nadar a Crol o Estilo Libre: Técnica, Errores y Ejercicios",
+};
 
 const jsx = (v: unknown) => `{${JSON.stringify(v)}}`;
 
@@ -264,7 +281,7 @@ function htmlToMdx(html: string, category: string): Converted {
   };
 
   // Ruido de plugins
-  $("#ez-toc-container, .ez-toc-v2_0_85, .yasr-auto-insert-overall, .yasr-overall-rating, .wp-block-spacer, noscript").remove();
+  $("#ez-toc-container, .ez-toc-v2_0_85, .yasr-auto-insert-overall, .yasr-overall-rating, .wp-block-spacer, noscript, style").remove();
   $(".ez-toc-section, .ez-toc-section-end").remove();
   $("script").each((_, s) => {
     const $s = $(s);
@@ -319,6 +336,37 @@ function htmlToMdx(html: string, category: string): Converted {
       $(el).replaceWith(out ? token(out) : "");
     });
 
+  // Galerías con enlaces (tarjetas hacia las páginas de producto) → <CardGrid>
+  $("figure.wp-block-gallery")
+    .toArray()
+    .filter((el) => $(el).parents("figure.wp-block-gallery").length === 0)
+    .forEach((el) => {
+      const items = $(el)
+        .find("figure")
+        .toArray()
+        .filter((f) => $(f).find("img").length > 0)
+        .map((f) => {
+          const $f = $(f);
+          const $img = $f.find("img").first();
+          const rawHref = $f.find("a[href]").first().attr("href");
+          if (!rawHref) return null;
+          const href = normalizeHref(rawHref);
+          const image = normalizeHref($img.attr("data-src") ?? $img.attr("src") ?? "").split("?")[0];
+          if (image.startsWith("/wp-content/uploads/")) images.add(image);
+          const alt = $img.attr("alt")?.trim() ?? "";
+          const description = $f.find(".gallery-item-description").text().trim();
+          return {
+            href: redirectMap.get(href) ?? href,
+            title: $f.find(".gallery-item-title").text().trim() || alt.charAt(0).toUpperCase() + alt.slice(1),
+            ...(description ? { description } : {}),
+            image,
+            alt,
+          };
+        });
+      if (!items.length || items.some((i) => !i || !i.title)) return; // galería sin enlaces: se queda como imágenes
+      $(el).replaceWith(token(`<CardGrid items=${jsx(items)} />`, "CardGrid"));
+    });
+
   // Vídeos
   $("iframe").each((_, f) => {
     const src = $(f).attr("src") ?? "";
@@ -332,7 +380,8 @@ function htmlToMdx(html: string, category: string): Converted {
   $("a[href]").each((_, a) => {
     const $a = $(a);
     let href = normalizeHref($a.attr("href")!);
-    const asin = asinFromHref(href);
+    const short = href.match(/^https?:\/\/amzn\.to\/(\w+)/)?.[1];
+    const asin = asinFromHref(href) ?? (short ? AMZN_SHORTLINKS[short] : undefined);
     if (/amazon\.de\/gp\/prime/.test(href)) {
       $a.replaceWith($a.html() ?? "");
       return;
@@ -379,8 +428,10 @@ function frontmatter(item: WpItem, kind: "page" | "post", extra: Record<string, 
     wpId: item.id,
     date: item.date,
     modified: item.modified,
-    seoTitle: y.title ? decode(y.title) : undefined,
-    description: y.description ? decode(y.description) : item.excerpt ? decode(item.excerpt.rendered) : undefined,
+    seoTitle: SEO_TITLE_OVERRIDES[urlPath(item.link)] ?? (y.title ? cleanSeoTitle(decode(y.title)) || undefined : undefined),
+    description: cleanSeoDescription(
+      y.description ? decode(y.description) : item.excerpt ? decode(item.excerpt.rendered) : "",
+    ) || undefined,
     image: y.og_image?.[0]?.url ? normalizeHref(y.og_image[0].url) : undefined,
     noindex: y.robots?.index === "noindex" ? true : undefined,
     ...extra,
@@ -450,7 +501,11 @@ async function main() {
     const p = urlPath(item.link);
     const segments = p.split("/").filter(Boolean);
     const category = kind === "post" ? (catById.get(item.categories![0])?.slug ?? "blog") : (segments[0] ?? "home");
-    const { body, jsonLd, components } = htmlToMdx(item.content.rendered, category);
+    const converted = htmlToMdx(item.content.rendered, category);
+    const { jsonLd, components } = converted;
+    // Un solo formulario de newsletter por página (QW6): se queda el primero.
+    let newsletters = 0;
+    const body = converted.body.replace(/\n*<Newsletter [^>]*\/>\n*/g, (m) => (newsletters++ === 0 ? m : "\n\n"));
     components.forEach((c) => usage.set(c, (usage.get(c) ?? 0) + 1));
 
     const extra: Record<string, unknown> =

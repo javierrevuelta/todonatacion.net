@@ -21,9 +21,24 @@ export const NAV: { href: string; label: string; children?: { href: string; labe
   { href: "/planes-entrenamiento/", label: "📗 Entrenamiento" },
 ];
 
+/**
+ * Guías de compra enlazadas desde el pie en todas las páginas (en WordPress era
+ * el widget "Análisis de los Últimos Productos", con los enlaces rotos).
+ */
+export const FOOTER_GUIDES = [
+  { href: "/gafas/", label: "Gafas de natación" },
+  { href: "/neopreno/", label: "Neoprenos para nadar" },
+  { href: "/palas/", label: "Palas de natación" },
+  { href: "/aletas/", label: "Aletas para nadar" },
+  { href: "/banador-hombre/", label: "Bañadores de hombre" },
+  { href: "/banador-mujer/", label: "Bañadores de mujer" },
+  { href: "/material-de-natacion/", label: "Todo el material" },
+];
+
 export const FOOTER_NAV = [
   { href: "/sobre-mi/", label: "Sobre mí" },
   { href: "/contacto/", label: "Contacto" },
   { href: "/aviso-legal/", label: "Aviso legal" },
+  // En WordPress se etiquetaba "Política de Privacidad" pero llevaba aquí: aún no existe esa página.
   { href: "/politica-de-cookies/", label: "Política de cookies" },
 ];
