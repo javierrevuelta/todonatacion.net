@@ -11,7 +11,8 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · 🔒 bloqueado por una decisión o da
 ## 1. QW2 — Rutas de imagen `///wp-content/` → `/wp-content/`
 
 - [x] Ninguna imagen del contenido, de las fichas de producto ni de las imágenes destacadas usa `///` ni `https:///` (lo corrige la migración)
-- [x] Todas las imágenes locales referenciadas existen en `public/` (196 imágenes)
+- [x] Todas las imágenes locales referenciadas existen en `public/` (227 imágenes)
+- [x] Imágenes destacadas (`og:image`) de 32 entradas descargadas: apuntaban a `https://www.todonatacion.net/…` y se habrían roto al cambiar el dominio. La auditoría comprueba las 71 páginas con `og:image`
 
 ## 2. QW1 — Enlaces internos rotos `https:/x`
 
@@ -34,7 +35,7 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · 🔒 bloqueado por una decisión o da
 
 - [x] Quitados `▷ ► ᐈ ✅ 🏊 ✨ >>`, los corchetes `【】`, el año (`2026`, `【2021】`) y las palabras en mayúsculas (`lib/seo-text.ts`)
 - [x] Quitado el sufijo de marca duplicado; la plantilla añade " - Todo Natación" solo a títulos de hasta 45 caracteres
-- [x] Quitada la misma decoración de las meta descriptions
+- [x] Quitada la misma decoración de las meta descriptions (incluido el reclamo `llll➤` del inicio, en 7 páginas)
 - [x] Home: «Todo Natación: técnica, entrenamientos y material para nadar» (antes «▷ 【TodoNatacion】- Mejor blog de natación de 2026»)
 - [x] Aplicado en el script de migración, para que no se pierda al volver a ejecutarlo
 

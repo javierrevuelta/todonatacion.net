@@ -4,7 +4,7 @@
  * palabras en mayúsculas) que hoy resta CTR y credibilidad.
  */
 
-const PICTOGRAPHS = /\p{Extended_Pictographic}|[▷►ᐈ]|️/gu;
+const PICTOGRAPHS = /\p{Extended_Pictographic}|[▷►ᐈ➤➜➔]|️/gu;
 /** Siglas que se quedan en mayúsculas. */
 const KEEP_UPPERCASE = new Set(["SWOLF", "GPS", "FINA", "TEA", "XT", "HR"]);
 
@@ -12,8 +12,10 @@ function stripDecoration(s: string): string {
   return (
     s
       .replace(/\u00a0/g, " ")
+      // "llll➤ Si quieres…": flecha de reclamo al inicio
+      .replace(/^\s*l*\s*[➤➜➔→]+\s*/u, "")
       // Emoji entre dos textos hacía de separador: "Salto ✨ Conoce" → "Salto: Conoce"
-      .replace(/(\S)\s*(?:\p{Extended_Pictographic}|[▷►ᐈ]|\uFE0F)+\s*(?=\S)/gu, "$1: ")
+      .replace(/(\S)\s*(?:\p{Extended_Pictographic}|[▷►ᐈ➤➜➔]|\uFE0F)+\s*(?=\S)/gu, "$1: ")
       .replace(PICTOGRAPHS, " ")
       .replace(/^\s*>>\s*/, "")
       // "del 【2026 】", "de 2026", "【2021】", "2026" sueltos (no distancias como "2000 a 2500 m")

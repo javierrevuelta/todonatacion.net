@@ -2,7 +2,7 @@
  * Audita el HTML generado por `next build` (sin servidor):
  *   - enlaces internos que no llevan a ninguna página
  *   - URLs mal formadas heredadas de WordPress (https:/x, ///wp-content)
- *   - imágenes locales que no existen en public/
+ *   - imágenes locales (contenido y og:image) que no existen en public/
  *   - enlaces de Amazon sin amazon.es, sin el tag o sin rel="sponsored"
  *
  * Uso: npm run build && npm run audit
@@ -64,6 +64,15 @@ for (const file of files) {
       const local = path.join(PUBLIC_DIR, decodeURIComponent(src.split("?")[0]));
       if (!fs.existsSync(local)) report("error", page, `imagen no encontrada: ${src}`);
     }
+  });
+
+  // Imagen para redes (og:image): debe servirse desde public/, no desde el WordPress antiguo.
+  $('meta[property="og:image"]').each((_, el) => {
+    const url = $(el).attr("content")!;
+    const own = url.match(/^https?:\/\/(?:www\.)?todonatacion\.net(\/.*)$/);
+    if (!own) return report("warn", page, `og:image externa: ${url}`);
+    const local = path.join(PUBLIC_DIR, decodeURIComponent(own[1].split("?")[0]));
+    if (!fs.existsSync(local)) report("error", page, `og:image no encontrada en public/: ${url}`);
   });
 
   body.find("a[href]").each((_, el) => {

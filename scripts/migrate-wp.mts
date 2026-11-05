@@ -93,7 +93,8 @@ function urlPath(link: string): string {
 function normalizeHref(href: string): string {
   if (/^(https?:)?\/\/\/+/.test(href)) return href.replace(/^(https?:)?\/+/, "/"); // ///x y https:///x (también rotos)
   if (/^https?:\/[^/]/.test(href)) return href.replace(/^https?:\//, "/");
-  if (href.startsWith(SITE)) return href.slice(SITE.length) || "/";
+  const site = href.match(/^https?:\/\/(?:www\.)?todonatacion\.net(?=\/|$)/);
+  if (site) return href.slice(site[0].length) || "/";
   return href;
 }
 
