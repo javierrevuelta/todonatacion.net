@@ -490,6 +490,17 @@ async function main() {
   ]);
   console.log(`WordPress: ${pages.length} páginas, ${posts.length} posts, ${categories.length} categorías`);
 
+  // Páginas editadas a mano (frontmatter `manual: true`): no se sobrescriben.
+  const manual = new Map<string, string>();
+  for (const dir of ["pages", "posts"]) {
+    const files = await fs.readdir(path.join(CONTENT, dir), { recursive: true }).catch(() => [] as string[]);
+    for (const rel of files.filter((f) => f.endsWith(".mdx"))) {
+      const file = path.join(CONTENT, dir, rel);
+      const source = await fs.readFile(file, "utf8");
+      if (matter(source).data.manual === true) manual.set(file, source);
+    }
+  }
+
   await fs.rm(path.join(CONTENT, "pages"), { recursive: true, force: true });
   await fs.rm(path.join(CONTENT, "posts"), { recursive: true, force: true });
   await fs.rm(path.join(CONTENT, "products"), { recursive: true, force: true });
@@ -528,6 +539,9 @@ async function main() {
     await validateMdx(file, source, errors);
     await writeFile(file, source);
   }
+
+  for (const [file, source] of manual) await writeFile(file, source);
+  if (manual.size) console.log(`Páginas manuales conservadas: ${manual.size}`);
 
   await writeFile(
     path.join(CONTENT, "categories.json"),

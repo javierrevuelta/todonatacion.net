@@ -20,7 +20,13 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · 🔒 necesita una decisión o un dato
 
 ## Bloqueantes
 
-- [ ] 🔒 **Publicidad y analítica:** WordPress tiene AdSense (`ca-pub-3758011133443292`), Google Tag Manager (`GTM-5CFX5MR`) y el banner de cookies CookieYes. La versión Next no tiene ninguno: al cambiar el DNS se pierden los ingresos de AdSense y los datos de Analytics. AdSense en la UE exige un banner de consentimiento certificado (CMP)
+- [x] **Publicidad y analítica** (`lib/tracking.ts`): GTM `GTM-5CFX5MR` (GA4 `G-PJ6NMF5EHR` y píxel de Facebook), AdSense con anuncios automáticos (`ca-pub-3758011133443292`), `ads.txt` y el mismo `dataLayer` de página que WordPress
+  - Consent Mode v2 denegado por defecto; el aviso de consentimiento es el de Google (configurado en AdSense → Privacidad y mensajes, ya activo en WordPress), que llega con el script de AdSense. No hacía falta CookieYes: WordPress no tenía banner propio
+  - Solo se carga en `todonatacion.net`/`www`; para probarlo en otro dominio, abrir con `?tracking=on`
+  - Pie: enlace «Configurar cookies» que reabre el aviso de Google
+  - Política de cookies reescrita (la de 2017 decía que navegar era consentir y citaba Safe Harbor) y marcada `manual: true` para que `npm run migrate` no la pise
+- [ ] 🔒 **En GTM (lo tiene que hacer el dueño de la cuenta):** el píxel de Facebook instala `_fbp` sin consentimiento (también en WordPress hoy). En GTM → etiqueta del píxel → Configuración de consentimiento → «Requerir consentimiento adicional»: `ad_storage`. Y borrar la etiqueta de Universal Analytics (`UA-4186034-28`), que Google dejó de procesar en 2024
+- [ ] Tras el cambio de DNS: comprobar que sale el aviso de Google y que GA4 recibe visitas (Tiempo real)
 - [ ] 🔒 **Formularios:** `/contacto/` dice «a través de este formulario» pero no hay formulario; `/descargable-los-7-errores-tecnicos/` y `/programa-tecnica/` salen vacías. Hace falta proveedor de newsletter (190 suscriptores en MailPoet) y un email de contacto
 - [ ] 🔒 **Dominio en Vercel:** `todonatacion.net` y `www.todonatacion.net` aún no están añadidos al proyecto (Vercel responde 404 para ese dominio)
 

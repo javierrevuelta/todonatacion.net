@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsButton } from "@/components/analytics/CookieSettingsButton";
 import { FOOTER_GUIDES, FOOTER_NAV, NAV, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 export function SiteHeader() {
@@ -51,7 +52,15 @@ export function SiteHeader() {
   );
 }
 
-function FooterColumn({ title, links }: { title: string; links: { href: string; label: string }[] }) {
+function FooterColumn({
+  title,
+  links,
+  children,
+}: {
+  title: string;
+  links: { href: string; label: string }[];
+  children?: React.ReactNode;
+}) {
   return (
     <nav aria-label={title}>
       <h2 className="mb-3 text-sm font-semibold text-slate-900">{title}</h2>
@@ -63,6 +72,7 @@ function FooterColumn({ title, links }: { title: string; links: { href: string; 
             </Link>
           </li>
         ))}
+        {children}
       </ul>
     </nav>
   );
@@ -82,7 +92,11 @@ export function SiteFooter() {
           </p>
         </div>
         <FooterColumn title="Guías de compra" links={FOOTER_GUIDES} />
-        <FooterColumn title="Información legal" links={FOOTER_NAV} />
+        <FooterColumn title="Información legal" links={FOOTER_NAV}>
+          <li>
+            <CookieSettingsButton className="cursor-pointer hover:text-sky-700" />
+          </li>
+        </FooterColumn>
       </div>
     </footer>
   );

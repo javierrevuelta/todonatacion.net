@@ -24,6 +24,8 @@ const FrontmatterSchema = z.object({
   categories: z.array(z.string()).default([]),
   tags: z.array(z.string()).default([]),
   jsonLd: z.array(z.unknown()).optional(),
+  /** Editada a mano: `npm run migrate` no la sobrescribe. */
+  manual: z.boolean().optional(),
 });
 
 export type Entry = z.infer<typeof FrontmatterSchema> & { body: string; file: string };

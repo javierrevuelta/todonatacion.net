@@ -4,6 +4,7 @@ import { getCategory, getPosts, type Entry } from "@/lib/content";
 import { BRANDED_TITLE_MAX } from "@/lib/seo-text";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { Mdx } from "./Mdx";
+import { PageDataLayer } from "@/components/analytics/Tracking";
 
 export function entryMetadata(entry: Entry): Metadata {
   const title = entry.seoTitle ?? entry.title;
@@ -80,6 +81,7 @@ export async function EntryView({ entry }: { entry: Entry }) {
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-8">
+      <PageDataLayer entry={entry} />
       {article && <JsonLd data={article} />}
       {entry.jsonLd?.map((d, i) => <JsonLd key={i} data={d} />)}
       <header className="mb-6">
