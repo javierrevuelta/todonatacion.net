@@ -60,6 +60,9 @@ for (const file of files) {
   body.find("img[src]").each((_, el) => {
     const src = $(el).attr("src")!;
     if (MALFORMED.test(src)) return report("error", page, `imagen mal formada: ${src}`);
+    // En Mac el disco ignora la forma Unicode; en Vercel una "ñ" en NFD da 403.
+    if (decodeURIComponent(src) !== decodeURIComponent(src).normalize("NFC"))
+      return report("error", page, `imagen con Unicode NFD (en Vercel da 403): ${src}`);
     if (src.startsWith("/") && !src.startsWith("//") && !src.startsWith("/_next/")) {
       const local = path.join(PUBLIC_DIR, decodeURIComponent(src.split("?")[0]));
       if (!fs.existsSync(local)) report("error", page, `imagen no encontrada: ${src}`);
@@ -79,6 +82,8 @@ for (const file of files) {
     const $a = $(el);
     const href = $a.attr("href")!;
     if (MALFORMED.test(href)) return report("error", page, `enlace mal formado: ${href}`);
+    if (decodeURIComponent(href) !== decodeURIComponent(href).normalize("NFC"))
+      return report("error", page, `enlace con Unicode NFD (en Vercel da 403): ${href}`);
 
     if (href.startsWith("/") && !href.startsWith("//")) {
       const clean = href.split(/[?#]/)[0];

@@ -417,7 +417,9 @@ function htmlToMdx(html: string, category: string): Converted {
 
 async function writeFile(file: string, data: string) {
   await fs.mkdir(path.dirname(file), { recursive: true });
-  await fs.writeFile(file, data);
+  // NFC: WordPress guarda algunos nombres en NFD ("n" + tilde combinable) y
+  // Vercel solo sirve el fichero si la URL usa la "ñ" compuesta (como git).
+  await fs.writeFile(file, data.normalize("NFC"));
 }
 
 function frontmatter(item: WpItem, kind: "page" | "post", extra: Record<string, unknown>) {
@@ -458,7 +460,7 @@ async function downloadImages() {
   await Promise.all(
     Array.from({ length: 8 }, async () => {
       for (let p = queue.shift(); p; p = queue.shift()) {
-        const dest = path.join(ROOT, "public", decodeURIComponent(p));
+        const dest = path.join(ROOT, "public", decodeURIComponent(p).normalize("NFC"));
         try {
           await fs.access(dest);
         } catch {

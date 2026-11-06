@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
       { source: "/sitemap_index.xml", destination: "/sitemap.xml", permanent: true },
       { source: "/:type(post|page|category|mailpoet_page)-sitemap.xml", destination: "/sitemap.xml", permanent: true },
       { source: "/feed/", destination: "/blog/", permanent: true },
+      { source: "/comments/feed/", destination: "/blog/", permanent: true },
+      // Feeds de categoría, paginación, etiquetas y autores de WordPress (las
+      // categorías de Next listan todas sus entradas en una sola página)
+      { source: "/:path*/feed/", destination: "/:path*/", permanent: true },
+      { source: "/:path*/page/:n(\\d+)/", destination: "/:path*/", permanent: true },
+      { source: "/tag/:slug*/", destination: "/blog/", permanent: true },
+      { source: "/author/:slug*/", destination: "/", permanent: true },
       // URLs antiguas que WordPress redirigía (plugin Redirection / slugs cambiados)
       ...legacyRedirects.map((r) => ({ ...r, permanent: true })),
     ];
