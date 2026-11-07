@@ -39,6 +39,6 @@ export const FOOTER_NAV = [
   { href: "/sobre-mi/", label: "Sobre mí" },
   { href: "/contacto/", label: "Contacto" },
   { href: "/aviso-legal/", label: "Aviso legal" },
-  // En WordPress se etiquetaba "Política de Privacidad" pero llevaba aquí: aún no existe esa página.
+  { href: "/politica-de-privacidad/", label: "Política de privacidad" },
   { href: "/politica-de-cookies/", label: "Política de cookies" },
 ];

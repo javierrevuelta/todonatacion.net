@@ -33,7 +33,7 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · 🔒 necesita una decisión o un dato
 ## Importante, no bloqueante
 
 - [ ] 🔒 37 comentarios publicados en WordPress no se han migrado
-- [ ] 🔒 Página `/politica-de-privacidad/` y email/LOPD del aviso legal (ver `QUICK-WINS.md`)
+- [x] Política de privacidad creada y aviso legal corregido (falta el domicilio del titular; ver `QUICK-WINS.md`)
 - [ ] Después del cambio, redirigir `todonatacion-net.vercel.app` al dominio principal (en Vercel → Domains)
 - [ ] No borrar el hosting de Hostinger: el correo está allí y WordPress es la fuente de `npm run migrate`
 

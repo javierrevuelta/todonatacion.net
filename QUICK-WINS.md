@@ -42,8 +42,9 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · 🔒 bloqueado por una decisión o da
 ## 5. QW3 — Enlaces legales y privacidad
 
 - [x] Footer enlaza contacto, aviso legal y cookies (en WordPress, el enlace «Política de Privacidad» llevaba a la página de cookies)
-- [ ] 🔒 No existe página de política de privacidad: hay que crearla en `/politica-de-privacidad/`
-- [ ] 🔒 El aviso legal tiene el email incompleto (`contacto@.`) y cita la LOPD de 1999 (derogada por el RGPD y la LOPDGDD 3/2018)
+- [x] Página `/politica-de-privacidad/` creada (RGPD/LOPDGDD) y enlazada en el pie
+- [x] Aviso legal reescrito: email `info@todonatacion.net`, sin la LOPD de 1999, sin las referencias a triatlón/solotriatlon.com y con la cláusula de afiliado
+- [ ] 🔒 Falta el domicilio del titular, que la LSSI (art. 10) pide en el aviso legal
 - [x] El formulario de newsletter enlaza a `/politica-de-privacidad/` en vez de a `#` (la página tiene que existir antes de activarlo)
 
 ## 6. QW6 — Un solo formulario de newsletter por página, con copy concreto

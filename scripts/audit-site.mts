@@ -3,6 +3,7 @@
  *   - enlaces internos que no llevan a ninguna página
  *   - URLs mal formadas heredadas de WordPress (https:/x, ///wp-content)
  *   - imágenes locales (contenido y og:image) que no existen en public/
+ *   - páginas sin H1 o con más de uno
  *   - enlaces de Amazon sin amazon.es, sin el tag o sin rel="sponsored"
  *
  * Uso: npm run build && npm run audit
@@ -56,6 +57,9 @@ for (const file of files) {
   const $ = cheerio.load(fs.readFileSync(file, "utf8"));
   // Solo el contenido renderizado: los <link> del <head> y los scripts de Next no cuentan.
   const body = $("body");
+
+  const h1 = body.find("h1").length;
+  if (h1 !== 1) report("error", page, `${h1} encabezados H1 (debe haber exactamente 1)`);
 
   body.find("img[src]").each((_, el) => {
     const src = $(el).attr("src")!;
