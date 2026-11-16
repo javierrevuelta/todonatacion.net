@@ -124,6 +124,18 @@ for (const file of files) {
   });
 }
 
+// Sitemap: Search Console rechaza fechas que no sean W3C Datetime
+// (solo día, o día y hora CON zona horaria).
+const sitemapFile = path.join(APP_DIR, "sitemap.xml.body");
+if (fs.existsSync(sitemapFile)) {
+  const W3C_DATE = /^\d{4}-\d{2}-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2}))?$/;
+  for (const [, d] of fs.readFileSync(sitemapFile, "utf8").matchAll(/<lastmod>([^<]*)<\/lastmod>/g)) {
+    if (!W3C_DATE.test(d)) report("error", "/sitemap.xml", `lastmod no válido para Search Console: ${d}`);
+  }
+} else {
+  report("warn", "/sitemap.xml", "no se encontró el sitemap generado");
+}
+
 const errors = issues.filter((i) => i.level === "error");
 const warns = issues.filter((i) => i.level === "warn");
 for (const i of [...errors, ...warns]) console.log(`${i.level === "error" ? "✗" : "!"} ${i.page}  ${i.message}`);
