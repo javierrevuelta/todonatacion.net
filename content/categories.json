@@ -26,8 +26,9 @@
   {
     "slug": "consejos",
     "name": "Consejos",
-    "description": "[mailpoet_form id=\"4\"]",
-    "count": 20
+    "description": "",
+    "count": 20,
+    "newsletter": "4"
   },
   {
     "slug": "entrenamientos",
@@ -38,13 +39,15 @@
   {
     "slug": "noticias",
     "name": "Noticias",
-    "description": "[mailpoet_form id=\"4\"]",
-    "count": 5
+    "description": "",
+    "count": 5,
+    "newsletter": "4"
   },
   {
     "slug": "recursos",
     "name": "Recursos",
-    "description": "[mailpoet_form id=\"1\"]",
-    "count": 3
+    "description": "",
+    "count": 3,
+    "newsletter": "1"
   }
 ]

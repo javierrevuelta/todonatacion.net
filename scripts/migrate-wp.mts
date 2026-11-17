@@ -76,6 +76,18 @@ function decode(html: string): string {
   return cheerio.load(`<i>${html}</i>`)("i").text().trim();
 }
 
+/**
+ * Shortcodes de plugins que WordPress dejó sin procesar (MailPoet en
+ * descripciones, Content Egg…). En el MDX llegan escapados: \\[nombre …\\].
+ */
+function stripShortcodes(text: string): string {
+  return text
+    .replace(/^[ \t]*\\?\[\/?(?:mailpoet_form|content-egg[\w-]*)\b[^\]\n]*\\?\][ \t]*$/gm, "")
+    .replace(/\\?\[\/?(?:mailpoet_form|content-egg[\w-]*)\b[^\]\n]*\\?\]/g, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 function slugify(s: string): string {
   return s
     .normalize("NFD")
@@ -510,6 +522,18 @@ async function main() {
   const errors: string[] = [];
   const usage = new Map<string, number>();
 
+  // Para el shortcode [orbital_cluster pages="450,389"] (bloque «También te puede interesar»).
+  const linkById = new Map([...pages, ...posts].map((i) => [i.id, { path: urlPath(i.link), title: decode(i.title.rendered) }]));
+  const orbitalCluster = (body: string): string =>
+    body.replace(/\\?\[orbital\\?_cluster pages=\D*([\d,]+)[^\]\n]*\\?\]/g, (_, ids: string) =>
+      ids
+        .split(",")
+        .map((id) => linkById.get(Number(id)))
+        .filter((l): l is { path: string; title: string } => !!l)
+        .map((l) => `- [${l.title}](${l.path})`)
+        .join("\n"),
+    );
+
   for (const item of [...pages, ...posts]) {
     const kind = item.categories ? "post" : "page";
     const p = urlPath(item.link);
@@ -519,7 +543,9 @@ async function main() {
     const { jsonLd, components } = converted;
     // Un solo formulario de newsletter por página (QW6): se queda el primero.
     let newsletters = 0;
-    const body = converted.body.replace(/\n*<Newsletter [^>]*\/>\n*/g, (m) => (newsletters++ === 0 ? m : "\n\n"));
+    const body = stripShortcodes(
+      orbitalCluster(converted.body).replace(/\n*<Newsletter [^>]*\/>\n*/g, (m) => (newsletters++ === 0 ? m : "\n\n")),
+    );
     components.forEach((c) => usage.set(c, (usage.get(c) ?? 0) + 1));
 
     const extra: Record<string, unknown> =
@@ -548,7 +574,17 @@ async function main() {
     JSON.stringify(
       categories
         .filter((c) => c.slug !== "uncategorized")
-        .map((c) => ({ slug: c.slug, name: decode(c.name), description: decode(c.description), count: c.count })),
+        .map((c) => {
+          // La descripción de algunas categorías era solo un shortcode de MailPoet.
+          const form = c.description.match(/\[mailpoet_form id="?(\d+)"?\]/)?.[1];
+          return {
+            slug: c.slug,
+            name: decode(c.name),
+            description: stripShortcodes(decode(c.description)),
+            count: c.count,
+            ...(form ? { newsletter: form } : {}),
+          };
+        }),
       null,
       2,
     ) + "\n",

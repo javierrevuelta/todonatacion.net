@@ -4,6 +4,7 @@
  *   - URLs mal formadas heredadas de WordPress (https:/x, ///wp-content)
  *   - imágenes locales (contenido y og:image) que no existen en public/
  *   - páginas sin H1 o con más de uno
+ *   - shortcodes de WordPress sin procesar ([mailpoet_form id="1"]…), en el texto o en la meta description
  *   - enlaces de Amazon sin amazon.es, sin el tag o sin rel="sponsored"
  *
  * Uso: npm run build && npm run audit
@@ -51,12 +52,20 @@ const report = (level: Issue["level"], page: string, message: string): void => {
 let amazonLinks = 0;
 
 const MALFORMED = /^(https?:)?\/\/\/|^https?:\/[^/]/;
+/** [nombre atributo=…] o [nombre_con_guion_bajo]: así son los shortcodes, no el texto normal entre corchetes. */
+const SHORTCODE = /\[\/?[a-z][\w-]*(?:\s+[\w-]+=[^\]]*|_[\w-]*)\]/i;
 
 for (const file of files) {
   const page = routeOf(file);
   const $ = cheerio.load(fs.readFileSync(file, "utf8"));
   // Solo el contenido renderizado: los <link> del <head> y los scripts de Next no cuentan.
   const body = $("body");
+
+  const text = body.clone().find("script, style, noscript").remove().end().text();
+  for (const where of [text, $('meta[name="description"]').attr("content") ?? ""]) {
+    const sc = where.match(SHORTCODE);
+    if (sc) report("error", page, `shortcode de WordPress sin procesar: ${sc[0]}`);
+  }
 
   const h1 = body.find("h1").length;
   if (h1 !== 1) report("error", page, `${h1} encabezados H1 (debe haber exactamente 1)`);

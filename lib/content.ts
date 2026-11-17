@@ -30,7 +30,14 @@ const FrontmatterSchema = z.object({
 
 export type Entry = z.infer<typeof FrontmatterSchema> & { body: string; file: string };
 
-export type Category = { slug: string; name: string; description: string; count: number };
+export type Category = {
+  slug: string;
+  name: string;
+  description: string;
+  count: number;
+  /** Formulario de newsletter (id de MailPoet) que WordPress mostraba en la categoría. */
+  newsletter?: string;
+};
 
 function walk(dir: string): string[] {
   if (!fs.existsSync(dir)) return [];
