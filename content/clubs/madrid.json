@@ -1,0 +1,319 @@
+{
+  "region": "madrid",
+  "source": "https://clubes.todonatacion.net/clubes/ccaa/madrid",
+  "clubs": [
+    {
+      "slug": "ad-el-castillo",
+      "name": "A.D. El Castillo"
+    },
+    {
+      "slug": "ad-rivas-natacion-rivas-vaciamadrid",
+      "name": "A.D. Rivas Natación",
+      "city": "Rivas-Vaciamadrid"
+    },
+    {
+      "slug": "ad-sincro-retiro",
+      "name": "A.D. Sincro Retiro"
+    },
+    {
+      "slug": "ad-univ-autonoma",
+      "name": "A.D. Universidad Autónoma"
+    },
+    {
+      "slug": "adc-las-matas",
+      "name": "A.D.C. Las Matas"
+    },
+    {
+      "slug": "adn-mostoles-mostoles",
+      "name": "A.D.N. Móstoles",
+      "city": "Móstoles"
+    },
+    {
+      "slug": "ar-concepcion-ciudad-lineal-madrid",
+      "name": "A.R. Concepción Ciudad Lineal",
+      "city": "Madrid"
+    },
+    {
+      "slug": "c-alameda-de-osuna",
+      "name": "C. Alameda de Osuna"
+    },
+    {
+      "slug": "c-encinas-de-boadilla-boadilla-del-monte",
+      "name": "C. Encinas de Boadilla",
+      "city": "Boadilla del Monte"
+    },
+    {
+      "slug": "c-tenis-chamartin-madrid",
+      "name": "Club de Tenis Chamartín",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cb-villanueva-de-la-canada-villanueva-de-la-canada",
+      "name": "C.B. Villanueva de la Cañada",
+      "city": "Villanueva de la Cañada"
+    },
+    {
+      "slug": "cd-halegatos-madrid",
+      "name": "C.D. Halegatos",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cd-el-valle-madrid",
+      "name": "C.D. El Valle",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cd-esparta-alcorcon-alcorcon",
+      "name": "C.D. Esparta Alcorcón",
+      "city": "Alcorcón"
+    },
+    {
+      "slug": "cd-gredos-san-diego",
+      "name": "C.D. Gredos San Diego",
+      "featured": 4
+    },
+    {
+      "slug": "cd-natacion-boadilla-madrid",
+      "name": "C.D. Natación Boadilla",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cd-sek-villafranca-castillo",
+      "name": "C.D. SEK",
+      "city": "Villafranca del Castillo"
+    },
+    {
+      "slug": "cd-vand03",
+      "name": "C.D. Vand'03"
+    },
+    {
+      "slug": "cdb-villaviciosa-de-odon-villaviciosa-de-odon",
+      "name": "C.D.B. Villaviciosa de Odón",
+      "city": "Villaviciosa de Odón"
+    },
+    {
+      "slug": "cde-mako-madrid",
+      "name": "C.D.E. Mako",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cde-malvar-arganda-del-rey",
+      "name": "C.D.E. Malvar",
+      "city": "Arganda del Rey"
+    },
+    {
+      "slug": "cde-natacion-chi-boi",
+      "name": "C.D.E. Natación Chi Boi"
+    },
+    {
+      "slug": "cdn-torrejon-torrejon-de-ardoz",
+      "name": "C.D.N. Torrejón",
+      "city": "Torrejón de Ardoz"
+    },
+    {
+      "slug": "cmn-arganda-arganda-del-rey",
+      "name": "C.M.N. Arganda",
+      "city": "Arganda del Rey"
+    },
+    {
+      "slug": "cn-alcobendas-alcobendas",
+      "name": "C.N. Alcobendas",
+      "city": "Alcobendas",
+      "featured": 3
+    },
+    {
+      "slug": "cn-arcadia-villanueva-canada",
+      "name": "C.N. Arcadia",
+      "city": "Villanueva de la Cañada"
+    },
+    {
+      "slug": "cn-ciudad-de-alcorcon-alcorcon",
+      "name": "C.N. Ciudad de Alcorcón",
+      "city": "Alcorcón"
+    },
+    {
+      "slug": "cn-colegio-mirasur-pinto",
+      "name": "C.N. Colegio Mirasur",
+      "city": "Pinto"
+    },
+    {
+      "slug": "cn-colmenar-viejo-colmenar-viejo",
+      "name": "C.N. Colmenar Viejo",
+      "city": "Colmenar Viejo"
+    },
+    {
+      "slug": "cn-coslada-coslada",
+      "name": "C.N. Coslada",
+      "city": "Coslada"
+    },
+    {
+      "slug": "cn-cuatro-caminos-madrid",
+      "name": "C.N. Cuatro Caminos",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cn-fuenlabrada-fuenlabrada",
+      "name": "C.N. Fuenlabrada",
+      "city": "Fuenlabrada",
+      "featured": 8
+    },
+    {
+      "slug": "cn-jimenez-madrid",
+      "name": "C.N. Jiménez",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cn-la-latina-madrid",
+      "name": "C.N. La Latina",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cn-las-rozas-las-rozas",
+      "name": "C.N. Las Rozas",
+      "city": "Las Rozas",
+      "featured": 7
+    },
+    {
+      "slug": "cn-leganes-leganes",
+      "name": "C.N. Leganés",
+      "city": "Leganés"
+    },
+    {
+      "slug": "cn-madrid-moscardo-madrid",
+      "name": "C.N. Madrid Moscardó",
+      "city": "Madrid",
+      "featured": 2
+    },
+    {
+      "slug": "cn-master-fuenlabrada-fuenlabrada",
+      "name": "C.N. Máster Fuenlabrada",
+      "city": "Fuenlabrada"
+    },
+    {
+      "slug": "cn-master-madrid",
+      "name": "C.N. Máster Madrid"
+    },
+    {
+      "slug": "cn-mirasierra-madrid",
+      "name": "C.N. Mirasierra",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cn-pozuelo-pozuelo-alarcon",
+      "name": "C.N. Pozuelo",
+      "city": "Pozuelo de Alarcón",
+      "featured": 5
+    },
+    {
+      "slug": "cn-san-blas",
+      "name": "C.N. San Blas"
+    },
+    {
+      "slug": "cn-san-fernando-de-henares-san-fernando-henares",
+      "name": "C.N. San Fernando de Henares",
+      "city": "San Fernando de Henares"
+    },
+    {
+      "slug": "cn-san-lorenzo-de-el-escorial-san-lorenzo-de-el-escorial",
+      "name": "C.N. San Lorenzo de El Escorial",
+      "city": "San Lorenzo de El Escorial"
+    },
+    {
+      "slug": "cn-sierra-oeste-las-rozas",
+      "name": "C.N. Sierra Oeste",
+      "city": "Las Rozas"
+    },
+    {
+      "slug": "cn-tres-cantos-tres-cantos",
+      "name": "C.N. Tres Cantos",
+      "city": "Tres Cantos",
+      "featured": 6
+    },
+    {
+      "slug": "cn-triatlon-barajas-madrid",
+      "name": "C.N. Triatlón Barajas",
+      "city": "Madrid"
+    },
+    {
+      "slug": "cn-valle-del-kas",
+      "name": "C.N. Valle del Kas"
+    },
+    {
+      "slug": "cn-vallmont-villanueva-del-pardillo",
+      "name": "C.N. Vallmont",
+      "city": "Villanueva del Pardillo"
+    },
+    {
+      "slug": "cn-villalba-collado-villalba",
+      "name": "C.N. Villalba",
+      "city": "Collado Villalba"
+    },
+    {
+      "slug": "cnw-majadahonda-majadahonda",
+      "name": "C.N.W. Majadahonda",
+      "city": "Majadahonda"
+    },
+    {
+      "slug": "cwaterpolo-ciudad-de-rivas-rivas",
+      "name": "C. Waterpolo Ciudad de Rivas",
+      "city": "Rivas-Vaciamadrid"
+    },
+    {
+      "slug": "cdb-natacion-swimtonic",
+      "name": "C.D.B. Natación Swimtonic"
+    },
+    {
+      "slug": "cde-natacion-ugena-mostoles",
+      "name": "C.D.E. Natación Ugena",
+      "city": "Móstoles"
+    },
+    {
+      "slug": "club-aquamadsincro-boadilla-del-monte",
+      "name": "Club Aquamadsincro",
+      "city": "Boadilla del Monte"
+    },
+    {
+      "slug": "club-deportivo-basico-bis-alcobendas",
+      "name": "C.D.B. Bis",
+      "city": "Alcobendas"
+    },
+    {
+      "slug": "cn-sur",
+      "name": "C.N. Sur"
+    },
+    {
+      "slug": "cnmarlins-moratalaz-madrid",
+      "name": "C.N. Marlins Moratalaz",
+      "city": "Madrid"
+    },
+    {
+      "slug": "en-joyfe-madrid",
+      "name": "E.N. Joyfe",
+      "city": "Madrid"
+    },
+    {
+      "slug": "g-madrid-sports",
+      "name": "G. Madrid Sports"
+    },
+    {
+      "slug": "race-san-sebastian-de-los-reyes",
+      "name": "RACE",
+      "city": "San Sebastián de los Reyes"
+    },
+    {
+      "slug": "real-canoe-nc-madrid",
+      "name": "Real Canoe N.C.",
+      "city": "Madrid",
+      "featured": 1
+    },
+    {
+      "slug": "safa-madrid-madrid",
+      "name": "SAFA Madrid",
+      "city": "Madrid"
+    },
+    {
+      "slug": "sincro",
+      "name": "Sincro"
+    }
+  ]
+}

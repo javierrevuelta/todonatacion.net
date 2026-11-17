@@ -40,7 +40,10 @@ export const inlineJson = (data: unknown) => JSON.stringify(data).replace(/</g, 
  *    el puente TCF de abajo traslada la elección al Consent Mode.
  */
 export const bootstrapScript = `(function(w,d){
-w.dataLayer=w.dataLayer||[];function gtag(){w.dataLayer.push(arguments);}w.gtag=w.gtag||gtag;
+w.dataLayer=w.dataLayer||[];
+// Datos de la página (los deja PageDataLayer como JSON): primero, como en WordPress.
+try{var pd=d.getElementById('page-data');if(pd)w.dataLayer.push(JSON.parse(pd.textContent));}catch(e){}
+function gtag(){w.dataLayer.push(arguments);}w.gtag=w.gtag||gtag;
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});
 gtag('set','ads_data_redaction',true);
 var on=${inlineJson(TRACKING_HOSTS)}.indexOf(location.hostname)>-1;
