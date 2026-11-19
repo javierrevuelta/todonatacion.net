@@ -9,6 +9,7 @@ import { AFFILIATE_REL, AMAZON_TAG } from "@/lib/affiliates/links";
 import { YouTube, Embed } from "./Embeds";
 import { CardGrid } from "./CardGrid";
 import { ClubList } from "./Clubs";
+import { ImageGrid } from "./ImageGrid";
 import { Newsletter, ContactForm } from "./Forms";
 import { SwolfCalculator, CaloriesCalculator } from "@/components/tools/Calculators";
 
@@ -50,6 +51,7 @@ const components: MDXComponents = {
   Embed,
   CardGrid,
   ClubList,
+  ImageGrid,
   Newsletter,
   ContactForm,
   SwolfCalculator,
