@@ -50,3 +50,20 @@ Tocar **solo** el registro web; el correo sigue en Hostinger.
 | TXT `google-site-verification` | | **no tocar** (Search Console) |
 
 Antes: bajar el TTL de A/AAAA/www a 300 s unas horas antes. Después: comprobar `https://todonatacion.net/` y `www`, el certificado SSL en Vercel y enviar el sitemap en Search Console.
+
+## Formularios (newsletter con Systeme y contacto)
+
+Los formularios están hechos pero **en producción no se ven hasta configurar su servicio** (en desarrollo se ven siempre y el envío se simula en la consola).
+
+| Formulario | Dónde | Etiqueta de Systeme (variable) |
+|---|---|---|
+| Newsletter general | Final de cada página y entrada, y `/recursos/` | `SYSTEME_TAG_NEWSLETTER` |
+| Guía «Los 7 errores técnicos» | Home, `/planes-entrenamiento/`, `/consejos/`, `/noticias/`, `/descargable-los-7-errores-tecnicos/` | `SYSTEME_TAG_GUIA_7_ERRORES` |
+| Lista de espera Programa Técnica (nombre, apellido, email) | `/programa-tecnica/` | `SYSTEME_TAG_PROGRAMA_TECNICA` |
+| Contacto | `/contacto/` (mientras tanto muestra el email) | Resend: `RESEND_API_KEY` |
+
+Pasos en Systeme:
+1. Crear las 3 etiquetas y apuntar su id numérico.
+2. Ajustes → Clave API pública → crear una clave.
+3. Automatizaciones: «Etiqueta añadida» → email de confirmación/bienvenida, entrega de la guía, etc.
+4. En Vercel → Settings → Environment Variables (Production): `SYSTEME_API_KEY` y las 3 `SYSTEME_TAG_*`. Volver a desplegar.

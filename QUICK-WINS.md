@@ -43,7 +43,7 @@ Leyenda: `[x]` hecho · `[ ]` pendiente · 🔒 bloqueado por una decisión o da
 
 - [x] Footer enlaza contacto, aviso legal y cookies (en WordPress, el enlace «Política de Privacidad» llevaba a la página de cookies)
 - [x] Página `/politica-de-privacidad/` creada (RGPD/LOPDGDD) y enlazada en el pie
-- [x] Aviso legal reescrito: email `info@todonatacion.net`, sin la LOPD de 1999, sin las referencias a triatlón/solotriatlon.com y con la cláusula de afiliado
+- [x] Aviso legal reescrito: email `hola@todonatacion.net`, sin la LOPD de 1999, sin las referencias a triatlón/solotriatlon.com y con la cláusula de afiliado
 - [ ] 🔒 Falta el domicilio del titular, que la LSSI (art. 10) pide en el aviso legal
 - [x] El formulario de newsletter enlaza a `/politica-de-privacidad/` en vez de a `#` (la página tiene que existir antes de activarlo)
 

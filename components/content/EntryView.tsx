@@ -5,6 +5,7 @@ import { BRANDED_TITLE_MAX } from "@/lib/seo-text";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { Mdx } from "./Mdx";
 import { PageDataLayer } from "@/components/analytics/Tracking";
+import { Newsletter, hasOwnForm } from "./Forms";
 
 export function entryMetadata(entry: Entry): Metadata {
   const title = entry.seoTitle ?? entry.title;
@@ -100,6 +101,9 @@ export async function EntryView({ entry }: { entry: Entry }) {
       <div className="prose prose-slate max-w-none prose-headings:scroll-mt-20 prose-a:text-sky-700 prose-img:rounded-lg">
         <Mdx source={entry.body} />
       </div>
+      {/* Como en WordPress (MailPoet «debajo de las entradas»): newsletter al final, salvo
+          en páginas que ya tienen su formulario o que no se indexan (legales, descargas). */}
+      {!entry.noindex && !hasOwnForm(entry.body) && <Newsletter form="2" />}
       {entry.path === "/blog/" && (
         <div className="mt-10">
           <PostList posts={getPosts()} />
