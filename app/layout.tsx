@@ -19,7 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="es" className={inter.variable}>
       <body className="flex min-h-screen flex-col font-sans">
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main id="contenido" tabIndex={-1} className="flex-1 focus:outline-none">{children}</main>
         <SiteFooter />
         <TrackingScripts />
       </body>

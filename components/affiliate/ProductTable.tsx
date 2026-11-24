@@ -17,6 +17,8 @@ export function ProductTable({
   rows?: ExtraRow[];
 }) {
   const products = getProducts(ids);
+  // La fila «Modelo» de AAWP repetía el título largo de Amazon: ya sale el nombre corto.
+  rows = rows.filter((r) => r.label !== "Modelo");
   // Si falta algún producto, los índices de ribbons/rows dejan de cuadrar.
   const index = (id: string) => ids.indexOf(id);
 

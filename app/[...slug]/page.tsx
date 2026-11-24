@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { EntryView, PostList, entryMetadata } from "@/components/content/EntryView";
 import { Newsletter } from "@/components/content/Forms";
+import { Breadcrumbs } from "@/components/content/Breadcrumbs";
 import { getAllPaths, getCategory, getEntryByPath, getPosts } from "@/lib/content";
 
 /**
@@ -46,6 +47,12 @@ export default async function Page({ params }: Props) {
   const category = found.category!;
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
+      <Breadcrumbs
+        items={[
+          { href: "/", label: "Inicio" },
+          { href: `/${category.slug}/`, label: category.name },
+        ]}
+      />
       <h1 className="mb-2 text-3xl font-extrabold text-slate-900">{category.name}</h1>
       {category.description && <p className="mb-6 text-slate-600">{category.description}</p>}
       <PostList posts={getPosts({ category: category.slug })} />

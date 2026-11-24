@@ -6,6 +6,17 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { Mdx } from "./Mdx";
 import { PageDataLayer } from "@/components/analytics/Tracking";
 import { Newsletter, hasOwnForm } from "./Forms";
+import { Breadcrumbs } from "./Breadcrumbs";
+import { Toc } from "./Toc";
+import { entryCrumbs } from "@/lib/breadcrumbs";
+import { tocItems } from "@/lib/headings";
+import { PlanToolbar } from "@/components/tools/TrainingPlan";
+
+/** Número de sesiones si la entrada es un plan de entrenamiento (≥ 6 «Sesión N» plegables). */
+function planSessions(body: string): number {
+  const n = (body.match(/<summary>\s*Sesi[oó]n\b/gi) ?? []).length;
+  return n >= 6 ? (body.match(/<details\b/g) ?? []).length : 0;
+}
 
 export function entryMetadata(entry: Entry): Metadata {
   const title = entry.seoTitle ?? entry.title;
@@ -64,7 +75,6 @@ export function PostList({ posts }: { posts: Entry[] }) {
 }
 
 export async function EntryView({ entry }: { entry: Entry }) {
-  const category = entry.type === "post" ? getCategory(entry.categories[0] ?? "") : undefined;
   const article =
     entry.type === "post"
       ? {
@@ -80,26 +90,26 @@ export async function EntryView({ entry }: { entry: Entry }) {
         }
       : null;
 
+  const sessions = planSessions(entry.body);
+
   return (
     <article className="mx-auto max-w-3xl px-4 py-8">
       <PageDataLayer entry={entry} />
       {article && <JsonLd data={article} />}
       {entry.jsonLd?.map((d, i) => <JsonLd key={i} data={d} />)}
+      <Breadcrumbs items={entryCrumbs(entry)} />
       <header className="mb-6">
-        {category && (
-          <Link href={`/${category.slug}/`} className="text-sm font-semibold uppercase tracking-wide text-sky-700">
-            {category.name}
-          </Link>
-        )}
-        <h1 className="mt-1 text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl">{entry.title}</h1>
+        <h1 className="text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl">{entry.title}</h1>
         {entry.type === "post" && (
           <p className="mt-2 text-sm text-slate-500">
             Actualizado el {dateFmt.format(new Date(entry.modified ?? entry.date))}
           </p>
         )}
       </header>
+      {!entry.noindex && <Toc items={tocItems(entry.body)} />}
+      {sessions > 0 && <PlanToolbar total={sessions} />}
       <div className="prose prose-slate max-w-none prose-headings:scroll-mt-20 prose-a:text-sky-700 prose-img:rounded-lg">
-        <Mdx source={entry.body} />
+        <Mdx source={entry.body} plan={sessions > 0} />
       </div>
       {/* Como en WordPress (MailPoet «debajo de las entradas»): newsletter al final, salvo
           en páginas que ya tienen su formulario o que no se indexan (legales, descargas). */}

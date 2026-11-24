@@ -5,10 +5,13 @@ import { cache } from "react";
 import { ProductSchema, type Product } from "./types";
 
 const PRODUCTS_DIR = path.join(process.cwd(), "content", "products");
+/** Nombres cortos para tarjetas y tablas (id → nombre). Fuera de products/ para que `npm run migrate` no los borre. */
+const NAMES_FILE = path.join(process.cwd(), "content", "product-names.json");
 
 export const getCatalog = cache((): Map<string, Product> => {
   const catalog = new Map<string, Product>();
   if (!fs.existsSync(PRODUCTS_DIR)) return catalog;
+  const names: Record<string, string> = fs.existsSync(NAMES_FILE) ? JSON.parse(fs.readFileSync(NAMES_FILE, "utf8")) : {};
   for (const file of fs.readdirSync(PRODUCTS_DIR)) {
     if (!file.endsWith(".json")) continue;
     const raw = JSON.parse(fs.readFileSync(path.join(PRODUCTS_DIR, file), "utf8"));
@@ -16,7 +19,8 @@ export const getCatalog = cache((): Map<string, Product> => {
     if (!parsed.success) {
       throw new Error(`Producto inválido en ${file}: ${parsed.error.message}`);
     }
-    catalog.set(parsed.data.id, parsed.data);
+    const product = parsed.data;
+    catalog.set(product.id, { ...product, shortName: product.shortName ?? names[product.id] });
   }
   return catalog;
 });

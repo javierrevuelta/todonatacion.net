@@ -47,20 +47,28 @@ export function ProductBox({ id, ribbon }: { id: string; ribbon?: string }) {
   );
 }
 
-/** Rejilla de productos, p. ej. "los más vendidos" (sustituye a la vista vertical de AAWP). */
+/**
+ * Rejilla de productos, p. ej. "los más vendidos" (sustituye a la vista vertical de AAWP).
+ * En móvil cada producto es una fila compacta (imagen a la izquierda) para no
+ * alargar la página; desde sm, tarjetas en rejilla.
+ */
 export function ProductGrid({ ids, numbered = true }: { ids: string[]; numbered?: boolean }) {
   const products = getProducts(ids);
   return (
-    <div className="not-prose my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="not-prose my-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
       {products.map((product, i) => (
         <div
           key={product.id}
-          className="relative flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 pt-5 shadow-sm"
+          className="relative flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-3 pt-4 shadow-sm sm:flex-col sm:items-stretch sm:p-4 sm:pt-5"
         >
           {numbered && <Ribbon>Nº {i + 1}</Ribbon>}
-          <ProductImage product={product} />
-          <Title product={product} clamp />
-          <OfferButton product={product} className="mt-auto" />
+          <div className="w-24 shrink-0 sm:w-auto">
+            <ProductImage product={product} />
+          </div>
+          <div className="flex min-w-0 flex-1 flex-col gap-2 sm:gap-3">
+            <Title product={product} clamp />
+            <OfferButton product={product} className="self-start sm:mt-auto sm:self-stretch" />
+          </div>
         </div>
       ))}
     </div>

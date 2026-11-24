@@ -11,6 +11,10 @@ import { CardGrid } from "./CardGrid";
 import { ClubList } from "./Clubs";
 import { ImageGrid } from "./ImageGrid";
 import { Newsletter, ContactForm } from "./Forms";
+import { slugify } from "@/lib/headings";
+import { remarkDetails } from "@/lib/mdx-details";
+import { Details } from "./Details";
+import { SessionDetails } from "@/components/tools/TrainingPlan";
 import { SwolfCalculator, CaloriesCalculator } from "@/components/tools/Calculators";
 
 /** Enlaces del contenido: internos con <Link>, Amazon con tag y rel="sponsored". */
@@ -35,6 +39,25 @@ function A({ href = "", children, ...rest }: React.ComponentProps<"a">) {
   );
 }
 
+/** Texto de los hijos de un encabezado, para generar su id (ver lib/headings.ts). */
+function textOf(node: React.ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(textOf).join("");
+  if (node && typeof node === "object" && "props" in node) {
+    return textOf((node.props as { children?: React.ReactNode }).children);
+  }
+  return "";
+}
+
+/** h2 con id para el índice de contenidos y enlaces directos a apartados. */
+function H2({ children, ...rest }: React.ComponentProps<"h2">) {
+  return (
+    <h2 id={slugify(textOf(children)) || undefined} {...rest}>
+      {children}
+    </h2>
+  );
+}
+
 function Img(props: React.ComponentProps<"img">) {
   // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
   return <img loading="lazy" decoding="async" className="mx-auto h-auto max-w-full rounded-lg" {...props} />;
@@ -42,6 +65,7 @@ function Img(props: React.ComponentProps<"img">) {
 
 const components: MDXComponents = {
   a: A,
+  h2: H2,
   img: Img,
   ProductBox,
   ProductGrid,
@@ -56,12 +80,16 @@ const components: MDXComponents = {
   ContactForm,
   SwolfCalculator,
   CaloriesCalculator,
+  Details,
 };
 
-export async function Mdx({ source }: { source: string }) {
+/** En los planes de entrenamiento, cada <details> es una sesión que se puede marcar como hecha. */
+const planComponents: MDXComponents = { ...components, Details: SessionDetails };
+
+export async function Mdx({ source, plan = false }: { source: string; plan?: boolean }) {
   const { default: Content } = await evaluate(source, {
     ...runtime,
-    remarkPlugins: [remarkGfm],
+    remarkPlugins: [remarkGfm, remarkDetails],
   });
-  return <Content components={components} />;
+  return <Content components={plan ? planComponents : components} />;
 }

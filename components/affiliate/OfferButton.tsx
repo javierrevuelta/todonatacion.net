@@ -30,7 +30,7 @@ export function ProductImage({ product, size = 160 }: { product: Product; size?:
         width={size}
         height={size}
         loading="lazy"
-        className="mx-auto h-auto max-h-40 w-auto object-contain"
+        className="mx-auto h-auto max-h-40 w-auto max-w-full object-contain"
       />
     </a>
   );

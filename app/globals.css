@@ -21,3 +21,21 @@ body {
 .prose details > :not(summary) {
   @apply px-4;
 }
+
+/* Impresión (p. ej. «Imprimir plan»): solo el contenido, sin cabecera, pie ni anuncios. */
+@media print {
+  body > header,
+  body > footer,
+  nav[aria-label="Migas de pan"],
+  .adsbygoogle,
+  .google-auto-placed,
+  a[href="#contenido"] {
+    display: none !important;
+  }
+  body {
+    @apply bg-white;
+  }
+  .prose details {
+    @apply break-inside-avoid border-slate-300;
+  }
+}

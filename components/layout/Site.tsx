@@ -1,54 +1,29 @@
 import Link from "next/link";
 import { CookieSettingsButton } from "@/components/analytics/CookieSettingsButton";
-import { FOOTER_GUIDES, FOOTER_NAV, NAV, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
+import { FOOTER_GUIDES, FOOTER_NAV, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
+import { DesktopNav, MobileNav } from "./Nav";
+import { Search } from "./Search";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="text-lg font-extrabold tracking-tight text-sky-700">
-          {SITE_NAME}
-        </Link>
-        {/* Menú sin JS: <details> en móvil, fila en escritorio */}
-        <details className="group relative md:hidden">
-          <summary className="cursor-pointer list-none rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium">
-            Menú
-          </summary>
-          <nav className="absolute right-0 mt-2 w-64 rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
-            {NAV.map((item) => (
-              <div key={item.href}>
-                <Link href={item.href} className="block rounded-lg px-3 py-2 hover:bg-sky-50">
-                  {item.label}
-                </Link>
-                {item.children?.map((c) => (
-                  <Link key={c.href} href={c.href} className="block rounded-lg py-1.5 pl-8 text-sm text-slate-600 hover:bg-sky-50">
-                    {c.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </nav>
-        </details>
-        <nav className="hidden items-center gap-1 text-sm font-medium md:flex">
-          {NAV.map((item) => (
-            <div key={item.href} className="group relative">
-              <Link href={item.href} className="block rounded-lg px-3 py-2 hover:bg-sky-50 hover:text-sky-700">
-                {item.label}
-              </Link>
-              {item.children && (
-                <div className="invisible absolute left-0 top-full w-48 rounded-xl border border-slate-200 bg-white p-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  {item.children.map((c) => (
-                    <Link key={c.href} href={c.href} className="block rounded-lg px-3 py-1.5 hover:bg-sky-50">
-                      {c.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </nav>
-      </div>
-    </header>
+    <>
+      <a
+        href="#contenido"
+        className="sr-only z-30 rounded-lg bg-sky-700 px-4 py-2 font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-3"
+      >
+        Saltar al contenido
+      </a>
+      <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-3 md:gap-4">
+          <Link href="/" className="mr-auto text-lg font-extrabold tracking-tight text-sky-700">
+            {SITE_NAME}
+          </Link>
+          <DesktopNav />
+          <Search />
+          <MobileNav />
+        </div>
+      </header>
+    </>
   );
 }
 

@@ -2,13 +2,16 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://todonatacio
 export const SITE_NAME = "Todo Natación";
 export const SITE_TAGLINE = "Disfruta de tu pasión por el agua";
 
-/** Menú principal, igual que en WordPress. */
-export const NAV: { href: string; label: string; children?: { href: string; label: string }[] }[] = [
-  { href: "/", label: "🏡 Inicio" },
-  { href: "/material-de-natacion/", label: "🤿 Material" },
+export type NavItem = { href: string; label: string; icon?: string; children?: { href: string; label: string }[] };
+
+/** Menú principal, igual que en WordPress. El emoji va aparte para ocultarlo a lectores de pantalla. */
+export const NAV: NavItem[] = [
+  { href: "/", label: "Inicio", icon: "🏡" },
+  { href: "/material-de-natacion/", label: "Material", icon: "🤿" },
   {
     href: "/estilos-natacion/",
-    label: "🏊🏼 Estilos",
+    label: "Estilos",
+    icon: "🏊🏼",
     children: [
       { href: "/estilos-natacion/crol-estilo-libre-natacion/", label: "Crol" },
       { href: "/estilos-natacion/braza/", label: "Braza" },
@@ -16,9 +19,9 @@ export const NAV: { href: string; label: string; children?: { href: string; labe
       { href: "/estilos-natacion/espalda/", label: "Espalda" },
     ],
   },
-  { href: "/noticias/", label: "🗞️ Noticias" },
-  { href: "/consejos/", label: "💡 Consejos" },
-  { href: "/planes-entrenamiento/", label: "📗 Entrenamiento" },
+  { href: "/noticias/", label: "Noticias", icon: "🗞️" },
+  { href: "/consejos/", label: "Consejos", icon: "💡" },
+  { href: "/planes-entrenamiento/", label: "Entrenamiento", icon: "📗" },
 ];
 
 /**
