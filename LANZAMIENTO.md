@@ -66,4 +66,4 @@ Pasos en Systeme:
 1. Crear las 3 etiquetas y apuntar su id numérico.
 2. Ajustes → Clave API pública → crear una clave.
 3. Automatizaciones: «Etiqueta añadida» → email de confirmación/bienvenida, entrega de la guía, etc.
-4. En Vercel → Settings → Environment Variables (Production): `SYSTEME_API_KEY` y las 3 `SYSTEME_TAG_*`. Volver a desplegar.
+4. En Vercel → Settings → Environment Variables (Production): `SYSTEME_API_KEY` y `SYSTEME_TAG_NEWSLETTER` (id 1987572). Las otras dos `SYSTEME_TAG_*` son opcionales: el plan gratuito solo permite una etiqueta y, sin ellas, todos los formularios usan la de la newsletter (el email de bienvenida debe incluir el enlace a la guía). Volver a desplegar.

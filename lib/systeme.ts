@@ -8,6 +8,8 @@ import type { NewsletterVariant } from "./forms";
  *   SYSTEME_TAG_NEWSLETTER          id numérico de la etiqueta de la newsletter
  *   SYSTEME_TAG_GUIA_7_ERRORES      id de la etiqueta del lead magnet
  *   SYSTEME_TAG_PROGRAMA_TECNICA    id de la etiqueta de la lista de espera
+ * Las dos últimas son opcionales: si faltan (el plan gratuito de Systeme solo
+ * permite una etiqueta), esos formularios usan la etiqueta de la newsletter.
  * Las automatizaciones de Systeme («etiqueta añadida» → enviar email, confirmar,
  * entregar la guía…) se disparan con esas etiquetas.
  */
@@ -74,8 +76,8 @@ export async function subscribe(input: {
   }
   if (!id) throw new Error(`Systeme: no se pudo crear el contacto (${created.status} ${await created.text()})`);
 
-  const tagId = Number(process.env[TAG_ENV[input.variant]]);
-  if (!tagId) throw new Error(`Systeme: falta la variable ${TAG_ENV[input.variant]}`);
+  const tagId = Number(process.env[TAG_ENV[input.variant]] || process.env.SYSTEME_TAG_NEWSLETTER);
+  if (!tagId) throw new Error(`Systeme: falta la variable ${TAG_ENV[input.variant]} (o SYSTEME_TAG_NEWSLETTER)`);
   const tagged = await call(`/contacts/${id}/tags`, { method: "POST", json: { tagId } });
   // 422/409: el contacto ya tenía la etiqueta.
   if (!tagged.ok && tagged.status !== 422 && tagged.status !== 409) {
