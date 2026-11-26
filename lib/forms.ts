@@ -19,7 +19,7 @@ export const NEWSLETTER_COPY: Record<NewsletterVariant, NewsletterCopy> = {
     title: "¿Quieres saber más sobre natación? 👋",
     text: "Recibe en tu email consejos de técnica, entrenamientos y novedades del mundo de la natación.",
     button: "Apuntarme",
-    success: "¡Gracias por apuntarte! Revisa tu bandeja de entrada (y la carpeta de spam) para confirmar tu suscripción.",
+    success: "¡Gracias por apuntarte! Revisa tu bandeja de entrada (y la carpeta de spam): te hemos enviado un email de bienvenida.",
     askName: false,
   },
   "guia-7-errores": {

@@ -111,9 +111,9 @@ export async function EntryView({ entry }: { entry: Entry }) {
       <div className="prose prose-slate max-w-none prose-headings:scroll-mt-20 prose-a:text-sky-700 prose-img:rounded-lg">
         <Mdx source={entry.body} plan={sessions > 0} />
       </div>
-      {/* Como en WordPress (MailPoet «debajo de las entradas»): newsletter al final, salvo
-          en páginas que ya tienen su formulario o que no se indexan (legales, descargas). */}
-      {!entry.noindex && !hasOwnForm(entry.body) && <Newsletter form="2" />}
+      {/* Al final de cada página, la descarga de la guía (convierte más que la newsletter
+          genérica), salvo en páginas que ya tienen su formulario o que no se indexan. */}
+      {!entry.noindex && !hasOwnForm(entry.body) && <Newsletter form="4" />}
       {entry.path === "/blog/" && (
         <div className="mt-10">
           <PostList posts={getPosts()} />
