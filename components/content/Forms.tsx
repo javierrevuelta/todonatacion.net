@@ -12,9 +12,20 @@ import { ContactFormClient } from "./ContactFormClient";
 const DEV = process.env.NODE_ENV !== "production";
 
 /** `form` es el id de MailPoet que dejó la migración (ver MAILPOET_FORMS). */
-export function Newsletter({ form }: { form?: string }) {
+export function Newsletter({
+  form,
+  title,
+  text,
+  button,
+}: {
+  form?: string;
+  /** Textos propios para un bloque concreto (p. ej. el de «Sobre mí»). */
+  title?: string;
+  text?: string;
+  button?: string;
+}) {
   if (!DEV && !systemeConfigured()) return null;
-  return <NewsletterForm variant={MAILPOET_FORMS[form ?? ""] ?? "newsletter"} />;
+  return <NewsletterForm variant={MAILPOET_FORMS[form ?? ""] ?? "newsletter"} copy={{ title, text, button }} />;
 }
 
 export function ContactForm() {

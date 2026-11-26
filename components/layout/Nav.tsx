@@ -52,7 +52,7 @@ export function MobileNav() {
   }, []);
 
   return (
-    <details ref={ref} className="group relative md:hidden">
+    <details ref={ref} className="group relative lg:hidden">
       <summary className="cursor-pointer list-none rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium [&::-webkit-details-marker]:hidden">
         Menú
       </summary>
@@ -86,7 +86,7 @@ export function MobileNav() {
 export function DesktopNav() {
   const pathname = usePathname();
   return (
-    <nav aria-label="Menú principal" className="hidden items-center gap-1 text-sm font-medium md:flex">
+    <nav aria-label="Menú principal" className="hidden items-center gap-1 text-sm font-medium lg:flex">
       {NAV.map((item) => (
         <div key={item.href} className="group relative">
           <Link

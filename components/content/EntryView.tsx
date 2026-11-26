@@ -1,8 +1,8 @@
-import Link from "next/link";
 import type { Metadata } from "next";
-import { getCategory, getPosts, type Entry } from "@/lib/content";
+import { getPosts, type Entry } from "@/lib/content";
+import { PostList } from "./PostList";
 import { BRANDED_TITLE_MAX } from "@/lib/seo-text";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 import { Mdx } from "./Mdx";
 import { PageDataLayer } from "@/components/analytics/Tracking";
 import { Newsletter, hasOwnForm } from "./Forms";
@@ -11,6 +11,8 @@ import { Toc } from "./Toc";
 import { entryCrumbs } from "@/lib/breadcrumbs";
 import { tocItems } from "@/lib/headings";
 import { PlanToolbar } from "@/components/tools/TrainingPlan";
+import { AuthorBox, AuthorByline } from "./Author";
+import { AUTHOR, authorPerson, isSigned, publisherOrganization } from "@/lib/author";
 
 /** Número de sesiones si la entrada es un plan de entrenamiento (≥ 6 «Sesión N» plegables). */
 function planSessions(body: string): number {
@@ -45,49 +47,28 @@ function JsonLd({ data }: { data: unknown }) {
   );
 }
 
-const dateFmt = new Intl.DateTimeFormat("es-ES", { dateStyle: "long" });
-
-export function PostList({ posts }: { posts: Entry[] }) {
-  return (
-    <ul className="grid gap-4 sm:grid-cols-2">
-      {posts.map((p) => (
-        <li key={p.path}>
-          <Link
-            href={p.path}
-            className="flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md"
-          >
-            {p.image && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={p.image} alt="" loading="lazy" className="aspect-video w-full object-cover" />
-            )}
-            <div className="flex flex-col gap-2 p-4">
-              <span className="text-xs uppercase tracking-wide text-sky-700">
-                {getCategory(p.categories[0] ?? "")?.name}
-              </span>
-              <span className="font-semibold text-slate-900">{p.title}</span>
-              {p.description && <span className="line-clamp-2 text-sm text-slate-600">{p.description}</span>}
-            </div>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 export async function EntryView({ entry }: { entry: Entry }) {
-  const article =
-    entry.type === "post"
-      ? {
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: entry.title,
-          description: entry.description,
-          datePublished: entry.date,
-          dateModified: entry.modified ?? entry.date,
-          image: entry.image ? new URL(entry.image, SITE_URL).toString() : undefined,
-          mainEntityOfPage: new URL(entry.path, SITE_URL).toString(),
-          publisher: { "@type": "Organization", name: SITE_NAME },
-        }
+  const signed = isSigned(entry);
+  const url = new URL(entry.path, SITE_URL).toString();
+  const person = authorPerson();
+  const article = signed
+    ? {
+        "@context": "https://schema.org",
+        "@type": entry.type === "post" ? "BlogPosting" : "Article",
+        headline: entry.title,
+        description: entry.description,
+        datePublished: entry.date,
+        dateModified: entry.modified ?? entry.date,
+        image: entry.image ? new URL(entry.image, SITE_URL).toString() : undefined,
+        mainEntityOfPage: url,
+        author: { "@type": "Person", "@id": person["@id"], name: person.name, url: person.url },
+        publisher: publisherOrganization(),
+      }
+    : null;
+  // «Sobre mí» es la página de perfil del autor: ahí va el Person completo.
+  const profile =
+    entry.path === AUTHOR.url
+      ? { "@context": "https://schema.org", "@type": "ProfilePage", url, mainEntity: person }
       : null;
 
   const sessions = planSessions(entry.body);
@@ -96,21 +77,19 @@ export async function EntryView({ entry }: { entry: Entry }) {
     <article className="mx-auto max-w-3xl px-4 py-8">
       <PageDataLayer entry={entry} />
       {article && <JsonLd data={article} />}
+      {profile && <JsonLd data={profile} />}
       {entry.jsonLd?.map((d, i) => <JsonLd key={i} data={d} />)}
       <Breadcrumbs items={entryCrumbs(entry)} />
       <header className="mb-6">
         <h1 className="text-3xl font-extrabold leading-tight text-slate-900 sm:text-4xl">{entry.title}</h1>
-        {entry.type === "post" && (
-          <p className="mt-2 text-sm text-slate-500">
-            Actualizado el {dateFmt.format(new Date(entry.modified ?? entry.date))}
-          </p>
-        )}
+        {signed && <AuthorByline date={entry.date} modified={entry.modified} />}
       </header>
       {!entry.noindex && <Toc items={tocItems(entry.body)} />}
       {sessions > 0 && <PlanToolbar total={sessions} />}
       <div className="prose prose-slate max-w-none prose-headings:scroll-mt-20 prose-a:text-sky-700 prose-img:rounded-lg">
         <Mdx source={entry.body} plan={sessions > 0} />
       </div>
+      {signed && <AuthorBox />}
       {/* Al final de cada página, la descarga de la guía (convierte más que la newsletter
           genérica), salvo en páginas que ya tienen su formulario o que no se indexan. */}
       {!entry.noindex && !hasOwnForm(entry.body) && <Newsletter form="4" />}

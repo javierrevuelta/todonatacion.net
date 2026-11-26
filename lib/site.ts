@@ -22,6 +22,7 @@ export const NAV: NavItem[] = [
   { href: "/noticias/", label: "Noticias", icon: "🗞️" },
   { href: "/consejos/", label: "Consejos", icon: "💡" },
   { href: "/planes-entrenamiento/", label: "Entrenamiento", icon: "📗" },
+  { href: "/sobre-mi/", label: "Sobre mí", icon: "👋" },
 ];
 
 /**

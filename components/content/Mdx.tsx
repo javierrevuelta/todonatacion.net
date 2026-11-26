@@ -14,6 +14,7 @@ import { Newsletter, ContactForm } from "./Forms";
 import { slugify } from "@/lib/headings";
 import { remarkDetails } from "@/lib/mdx-details";
 import { Details } from "./Details";
+import { LatestPosts } from "./PostList";
 import { SessionDetails } from "@/components/tools/TrainingPlan";
 import { SwolfCalculator, CaloriesCalculator } from "@/components/tools/Calculators";
 
@@ -81,6 +82,7 @@ const components: MDXComponents = {
   SwolfCalculator,
   CaloriesCalculator,
   Details,
+  LatestPosts,
 };
 
 /** En los planes de entrenamiento, cada <details> es una sesión que se puede marcar como hecha. */

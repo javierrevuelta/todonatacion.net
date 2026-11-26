@@ -11,8 +11,20 @@ const PURPOSE: Record<NewsletterVariant, string> = {
   "programa-tecnica": "avisarte de la apertura del Programa Técnica y enviarte la newsletter",
 };
 
-export function NewsletterForm({ variant }: { variant: NewsletterVariant }) {
-  const copy = NEWSLETTER_COPY[variant];
+export function NewsletterForm({
+  variant,
+  copy: overrides,
+}: {
+  variant: NewsletterVariant;
+  copy?: { title?: string; text?: string; button?: string };
+}) {
+  const base = NEWSLETTER_COPY[variant];
+  const copy = {
+    ...base,
+    title: overrides?.title ?? base.title,
+    text: overrides?.text ?? base.text,
+    button: overrides?.button ?? base.button,
+  };
   const action = subscribeAction.bind(null, variant);
   const [state, formAction, pending] = useActionState(action, INITIAL_FORM_STATE);
   const id = useId();

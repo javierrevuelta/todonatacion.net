@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { EntryView, PostList, entryMetadata } from "@/components/content/EntryView";
+import { EntryView, entryMetadata } from "@/components/content/EntryView";
+import { PostList } from "@/components/content/PostList";
 import { Newsletter } from "@/components/content/Forms";
 import { Breadcrumbs } from "@/components/content/Breadcrumbs";
 import { getAllPaths, getCategory, getEntryByPath, getPosts } from "@/lib/content";
