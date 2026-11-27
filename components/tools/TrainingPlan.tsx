@@ -5,7 +5,7 @@ import { useRef, useSyncExternalStore } from "react";
 
 /**
  * Herramientas de los planes de entrenamiento: marcar sesiones hechas (se
- * guardan en este navegador), desplegar/plegar todas e imprimir el plan.
+ * guardan en este navegador) y desplegar/plegar todas.
  */
 const EVENT = "plan-progress";
 const EMPTY: number[] = [];
@@ -62,14 +62,6 @@ export function PlanToolbar({ total }: { total: number }) {
   const pct = Math.round((done.length / total) * 100);
 
   const setAll = (open: boolean) => sessions().forEach((d) => (d.open = open));
-  const print = () => {
-    const wasOpen = sessions().map((d) => d.open);
-    setAll(true);
-    window.addEventListener("afterprint", () => sessions().forEach((d, i) => (d.open = wasOpen[i] ?? false)), {
-      once: true,
-    });
-    window.print();
-  };
 
   return (
     <div className="not-prose my-6 rounded-xl border border-sky-200 bg-sky-50 p-4 print:hidden">
@@ -95,9 +87,6 @@ export function PlanToolbar({ total }: { total: number }) {
         </button>
         <button type="button" className={button} onClick={() => setAll(false)}>
           Plegar todas
-        </button>
-        <button type="button" className={button} onClick={print}>
-          Imprimir plan
         </button>
         {done.length > 0 && (
           <button
