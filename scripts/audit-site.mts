@@ -6,6 +6,7 @@
  *   - páginas sin H1 o con más de uno
  *   - shortcodes de WordPress sin procesar ([mailpoet_form id="1"]…), en el texto o en la meta description
  *   - enlaces de Amazon sin amazon.es, sin el tag o sin rel="sponsored"
+ *   - FAQPage cuyas preguntas o respuestas no se ven igual en la página
  *
  * Uso: npm run build && npm run audit
  * Sale con código 1 si hay errores.
@@ -66,6 +67,29 @@ for (const file of files) {
     const sc = where.match(SHORTCODE);
     if (sc) report("error", page, `shortcode de WordPress sin procesar: ${sc[0]}`);
   }
+
+  // FAQPage: Google exige que preguntas y respuestas se vean tal cual en la página.
+  const norm = (s: string) => s.replace(/\s+/g, " ").trim();
+  const visible = norm(text);
+  const h3s = new Set(body.find("h3").map((_, el) => norm($(el).text())).get());
+  const faqs: { mainEntity: { name: string; acceptedAnswer: { text: string } }[] }[] = [];
+  $('script[type="application/ld+json"]').each((_, el) => {
+    try {
+      const data = JSON.parse($(el).html() ?? "");
+      if (data["@type"] === "FAQPage") faqs.push(data);
+    } catch {
+      report("error", page, "JSON-LD que no es JSON válido");
+    }
+  });
+  if (faqs.length > 1) report("error", page, `${faqs.length} bloques FAQPage (debe haber uno)`);
+  for (const q of faqs.flatMap((f) => f.mainEntity)) {
+    if (!h3s.has(norm(q.name))) report("error", page, `pregunta del FAQPage sin su H3 en la página: ${q.name}`);
+    const answer = norm(q.acceptedAnswer?.text ?? "");
+    if (!answer) report("error", page, `pregunta del FAQPage sin respuesta: ${q.name}`);
+    else if (!visible.includes(answer)) report("error", page, `respuesta del FAQPage que no aparece en la página: ${q.name}`);
+  }
+  const faqHeading = body.find("h2").filter((_, el) => /^Preguntas frecuentes/i.test(norm($(el).text()))).length;
+  if (faqHeading && !faqs.length) report("warn", page, "sección de preguntas frecuentes sin FAQPage");
 
   const h1 = body.find("h1").length;
   if (h1 !== 1) report("error", page, `${h1} encabezados H1 (debe haber exactamente 1)`);

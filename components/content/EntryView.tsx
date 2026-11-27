@@ -10,6 +10,7 @@ import { Breadcrumbs } from "./Breadcrumbs";
 import { Toc } from "./Toc";
 import { entryCrumbs } from "@/lib/breadcrumbs";
 import { tocItems } from "@/lib/headings";
+import { faqJsonLd } from "@/lib/faq";
 import { PlanToolbar } from "@/components/tools/TrainingPlan";
 import { AuthorBox, AuthorByline } from "./Author";
 import { AUTHOR, authorPerson, isSigned, publisherOrganization } from "@/lib/author";
@@ -71,6 +72,10 @@ export async function EntryView({ entry }: { entry: Entry }) {
       ? { "@context": "https://schema.org", "@type": "ProfilePage", url, mainEntity: person }
       : null;
 
+  // Preguntas frecuentes del propio contenido (Google ya no las muestra como desplegable
+  // salvo a webs oficiales o de salud, pero ayudan a entender qué responde la página).
+  const faq = entry.noindex ? null : faqJsonLd(entry.body);
+
   const sessions = planSessions(entry.body);
 
   return (
@@ -78,6 +83,7 @@ export async function EntryView({ entry }: { entry: Entry }) {
       <PageDataLayer entry={entry} />
       {article && <JsonLd data={article} />}
       {profile && <JsonLd data={profile} />}
+      {faq && <JsonLd data={faq} />}
       {entry.jsonLd?.map((d, i) => <JsonLd key={i} data={d} />)}
       <Breadcrumbs items={entryCrumbs(entry)} />
       <header className="mb-6">
